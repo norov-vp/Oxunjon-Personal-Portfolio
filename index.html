@@ -10,12 +10,31 @@
 </head>
 <body>
 
-<!-- ===== PRELOADER (Epic kirish animatsiyasi) ===== -->
+<!-- ===== PRELOADER (Epic kirish + kompyuterda ishlayotgan odamcha) ===== -->
 <div class="preloader" id="preloader">
     <div class="preloader-container">
-        <div class="preloader-ring"></div>
-        <div class="preloader-ring ring-2"></div>
-        <div class="preloader-ring ring-3"></div>
+        <!-- Kompyuterda ishlayotgan odamcha animatsiyasi -->
+        <div class="preloader-dev">
+            <div class="dev-computer">
+                <div class="dev-screen">
+                    <div class="dev-code">
+                        <span class="dev-line"></span>
+                        <span class="dev-line"></span>
+                        <span class="dev-line"></span>
+                        <span class="dev-line"></span>
+                        <span class="dev-cursor"></span>
+                    </div>
+                </div>
+                <div class="dev-keyboard"></div>
+                <div class="dev-person">
+                    <div class="dev-head"></div>
+                    <div class="dev-body"></div>
+                    <div class="dev-arm-left"></div>
+                    <div class="dev-arm-right"></div>
+                </div>
+            </div>
+        </div>
+        
         <div class="preloader-text">
             <span class="letter" style="--i:0">O</span>
             <span class="letter" style="--i:1">x</span>
@@ -24,23 +43,15 @@
             <span class="letter" style="--i:4">j</span>
             <span class="letter" style="--i:5">o</span>
             <span class="letter" style="--i:6">n</span>
-            <span class="letter" style="--i:7"> </span>
-            <span class="letter" style="--i:8">🐱</span>
-            <span class="letter" style="--i:9">‍</span>
-            <span class="letter" style="--i:10">💻</span>
         </div>
-        <div class="preloader-code">
-            <span class="code-line">> Loading portfolio...</span>
-            <span class="code-line">> Initializing components...</span>
-            <span class="code-line">> Ready!</span>
-        </div>
+        <div class="preloader-sub">Loading portfolio...</div>
         <div class="preloader-progress">
             <div class="progress-bar" id="progressBar"></div>
         </div>
     </div>
 </div>
 
-<!-- ===== CURSOR ===== -->
+<!-- ===== CUSTOM CURSOR ===== -->
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
@@ -76,41 +87,35 @@
     </div>
 </nav>
 
-<!-- ===== HERO ===== -->
+<!-- ===== HERO (Bosh sahifa) ===== -->
 <section id="home" class="hero">
     <div class="hero-bg">
         <div class="gradient-orb orb1"></div>
         <div class="gradient-orb orb2"></div>
         <div class="gradient-orb orb3"></div>
-        <div class="particles" id="particles"></div>
     </div>
     <div class="container">
         <div class="hero-grid">
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="pulse-dot"></span>
-                    <span class="badge-text">Open to Work</span>
-                    <span class="badge-shimmer"></span>
+                    Open to Work
                 </div>
                 <h1 class="hero-title">
                     Salom, men <br />
                     <span class="gradient-text">Oxunjon</span>
-                    <span class="wave-emoji">👋</span>
                 </h1>
                 <div class="hero-typing">
                     <i class="fas fa-terminal"></i>
                     <span class="typing-text"></span>
                 </div>
                 <p class="hero-desc">
-                    Men <span class="highlight-text">zamonaviy veb-ilovalar</span> va 
-                    <span class="highlight-text">mobil dasturlar</span> yarataman. 
-                    <span class="highlight-text">4 yillik tajriba</span> va 
-                    <span class="highlight-text">50+ loyiha</span>.
+                    <span class="highlight-text">Full-Stack Dasturchi</span> | 
+                    4+ yillik tajriba | 50+ loyiha
                 </p>
                 <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">
-                        <i class="fas fa-rocket"></i> Xizmatlar
-                        <span class="btn-shimmer"></span>
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> Loyihalar
                     </a>
                     <a href="#contact" class="btn btn-outline">
                         <i class="fas fa-paper-plane"></i> Bog'lanish
@@ -121,40 +126,37 @@
                     <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-telegram-plane"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-x-twitter"></i></a>
-                </div>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <span class="stat-value">4+</span>
-                        <span class="stat-label">Yillik tajriba</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="stat-value">50+</span>
-                        <span class="stat-label">Loyihalar</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="stat-value">30+</span>
-                        <span class="stat-label">Mijozlar</span>
-                    </div>
                 </div>
             </div>
             <div class="hero-visual">
                 <div class="hero-avatar-wrapper">
-                    <div class="avatar-ring">
-                        <div class="avatar-ring-spin"></div>
-                    </div>
-                    <div class="avatar-icon">
-                        <i class="fas fa-user-astronaut"></i>
-                    </div>
-                    <div class="floating-tech">
-                        <span class="tech-item" style="--i:1"><i class="fab fa-react"></i></span>
-                        <span class="tech-item" style="--i:2"><i class="fab fa-node-js"></i></span>
-                        <span class="tech-item" style="--i:3"><i class="fas fa-database"></i></span>
-                        <span class="tech-item" style="--i:4"><i class="fab fa-python"></i></span>
-                        <span class="tech-item" style="--i:5"><i class="fab fa-aws"></i></span>
-                        <span class="tech-item" style="--i:6"><i class="fab fa-docker"></i></span>
-                        <span class="tech-item" style="--i:7"><i class="fab fa-vuejs"></i></span>
-                        <span class="tech-item" style="--i:8"><i class="fab fa-php"></i></span>
+                    <!-- Yumaloq ichida rasm + V + PHP aylana -->
+                    <div class="avatar-container">
+                        <div class="avatar-ring">
+                            <div class="ring-text">PHP</div>
+                            <div class="ring-text">V</div>
+                            <div class="ring-text">PHP</div>
+                            <div class="ring-text">V</div>
+                        </div>
+                        <div class="avatar-inner">
+                            <div class="avatar-image">
+                                <i class="fas fa-user-circle"></i>
+                                <!-- Rasm qo'yish uchun: -->
+                                <!-- <img src="your-photo.jpg" alt="Oxunjon" /> -->
+                            </div>
+                            <div class="avatar-v-logo">
+                                <span class="v-text">V</span>
+                                <span class="php-text">PHP</span>
+                            </div>
+                        </div>
+                        <div class="floating-tech">
+                            <span class="tech-item" style="--i:1"><i class="fab fa-react"></i></span>
+                            <span class="tech-item" style="--i:2"><i class="fab fa-node-js"></i></span>
+                            <span class="tech-item" style="--i:3"><i class="fas fa-database"></i></span>
+                            <span class="tech-item" style="--i:4"><i class="fab fa-python"></i></span>
+                            <span class="tech-item" style="--i:5"><i class="fab fa-vuejs"></i></span>
+                            <span class="tech-item" style="--i:6"><i class="fab fa-php"></i></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -166,7 +168,7 @@
     </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
+<!-- ===== ABOUT (Men sahifasi) ===== -->
 <section id="about" class="about">
     <div class="container">
         <div class="section-header">
@@ -174,20 +176,55 @@
             <h2>Men haqimda</h2>
             <div class="section-line"></div>
         </div>
-        <div class="about-grid">
-            <div class="about-text">
-                <h3>Nega meni <span class="gradient-text">tanlash</span> kerak?</h3>
-                <p>
-                    Men <span class="highlight-text">Full-Stack dasturchi</span> sifatida 
-                    frontend va backend texnologiyalarida chuqur bilimga egaman. 
-                    Mijozlarim uchun <span class="highlight-text">tez, xavfsiz</span> va 
-                    <span class="highlight-text">zamonaviy</span> echimlar yarataman.
+        <div class="about-wrapper">
+            <div class="about-image">
+                <div class="about-img-container">
+                    <div class="about-img-ring"></div>
+                    <div class="about-img-inner">
+                        <i class="fas fa-user-astronaut"></i>
+                        <!-- Rasm qo'yish uchun: -->
+                        <!-- <img src="about-photo.jpg" alt="Oxunjon" /> -->
+                    </div>
+                </div>
+            </div>
+            <div class="about-content">
+                <h3>Men <span class="gradient-text">Oxunjon</span></h3>
+                <p class="about-bio">
+                    <i class="fas fa-quote-left"></i>
+                    Full-Stack dasturchi, zamonaviy veb-ilovalar va mobil dasturlar yarataman.
+                    Har bir loyihaga kreativ yondashaman va sifatli natijalarni taqdim etaman.
+                    <i class="fas fa-quote-right"></i>
                 </p>
-                <p>
-                    Har bir loyihaga <span class="highlight-text">kreativ</span> yondashaman 
-                    va <span class="highlight-text">sifatli</span> natijalarni taqdim etaman.
-                    <span class="highlight-text">🚀 100%</span> mijozlar mamnuniyati.
-                </p>
+                <div class="about-info-grid">
+                    <div class="about-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span>Manzil</span>
+                            <p>Toshkent, O'zbekiston</p>
+                        </div>
+                    </div>
+                    <div class="about-info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <span>Ta'lim</span>
+                            <p>TATU, Kompyuter injiniringi</p>
+                        </div>
+                    </div>
+                    <div class="about-info-item">
+                        <i class="fas fa-briefcase"></i>
+                        <div>
+                            <span>Hozirgi</span>
+                            <p>Senior Dasturchi @ TechCorp</p>
+                        </div>
+                    </div>
+                    <div class="about-info-item">
+                        <i class="fas fa-award"></i>
+                        <div>
+                            <span>Sertifikatlar</span>
+                            <p>AWS, React, Node.js</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="about-stats">
                     <div class="stat-card">
                         <span class="stat-number" data-count="50">0</span>
@@ -198,38 +235,8 @@
                         <span class="stat-label">Yillik tajriba</span>
                     </div>
                     <div class="stat-card">
-                        <span class="stat-number" data-count="100">0</span>
-                        <span class="stat-label">% Mijozlar mamnuniyati</span>
-                    </div>
-                </div>
-            </div>
-            <div class="about-cards">
-                <div class="about-card">
-                    <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="card-info">
-                        <h4>Manzil</h4>
-                        <p>Toshkent, O'zbekiston</p>
-                    </div>
-                </div>
-                <div class="about-card">
-                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="card-info">
-                        <h4>Ta'lim</h4>
-                        <p>TATU, Kompyuter injiniringi</p>
-                    </div>
-                </div>
-                <div class="about-card">
-                    <div class="card-icon"><i class="fas fa-briefcase"></i></div>
-                    <div class="card-info">
-                        <h4>Hozirgi</h4>
-                        <p>Senior Dasturchi @ TechCorp</p>
-                    </div>
-                </div>
-                <div class="about-card">
-                    <div class="card-icon"><i class="fas fa-award"></i></div>
-                    <div class="card-info">
-                        <h4>Sertifikatlar</h4>
-                        <p>AWS, React, Node.js</p>
+                        <span class="stat-number" data-count="30">0</span>
+                        <span class="stat-label">Mijozlar</span>
                     </div>
                 </div>
             </div>
@@ -237,7 +244,7 @@
     </div>
 </section>
 
-<!-- ===== SKILLS ===== -->
+<!-- ===== SKILLS (Yangi 3D ko'nikmalar) ===== -->
 <section id="skills" class="skills">
     <div class="container">
         <div class="section-header">
@@ -245,99 +252,161 @@
             <h2>Ko'nikmalar</h2>
             <div class="section-line"></div>
         </div>
-        <div class="skills-wrapper">
-            <div class="skills-grid">
-                <div class="skill-group">
-                    <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>HTML5</span>
-                            <span class="skill-percent">95%</span>
-                        </div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="95"></div></div>
+        <div class="skills-showcase">
+            <div class="skill-card-3d" data-skill="HTML">
+                <div class="skill-card-inner">
+                    <div class="skill-card-front">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML5</span>
+                        <div class="skill-level">95%</div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>CSS3</span>
-                            <span class="skill-percent">90%</span>
-                        </div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>JavaScript</span>
-                            <span class="skill-percent">92%</span>
-                        </div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="92"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>React.js</span>
-                            <span class="skill-percent">88%</span>
-                        </div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="88"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Vue.js</span>
-                            <span class="skill-percent">75%</span>
-                        </div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h3><i class="fas fa-server"></i> Backend</h3>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Node.js</span>
-                            <span class="skill-percent">85%</span>
-                        </div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Python</span>
-                            <span class="skill-percent">80%</span>
-                        </div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>PHP</span>
-                            <span class="skill-percent">70%</span>
-                        </div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="70"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>MongoDB</span>
-                            <span class="skill-percent">82%</span>
-                        </div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="82"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>MySQL</span>
-                            <span class="skill-percent">78%</span>
-                        </div>
-                        <div class="skill-bar"><div class="skill-progress" data-width="78"></div></div>
+                    <div class="skill-card-back">
+                        <p>Semantic markup</p>
+                        <p>SEO optimized</p>
+                        <p>Accessibility</p>
                     </div>
                 </div>
             </div>
-            <div class="tech-cloud">
-                <span><i class="fab fa-html5"></i></span>
-                <span><i class="fab fa-css3-alt"></i></span>
-                <span><i class="fab fa-js"></i></span>
-                <span><i class="fab fa-react"></i></span>
-                <span><i class="fab fa-vuejs"></i></span>
-                <span><i class="fab fa-node"></i></span>
-                <span><i class="fab fa-python"></i></span>
-                <span><i class="fab fa-php"></i></span>
-                <span><i class="fas fa-database"></i></span>
-                <span><i class="fab fa-git-alt"></i></span>
-                <span><i class="fab fa-docker"></i></span>
-                <span><i class="fab fa-aws"></i></span>
+            <div class="skill-card-3d" data-skill="CSS">
+                <div class="skill-card-inner">
+                    <div class="skill-card-front">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS3</span>
+                        <div class="skill-level">90%</div>
+                    </div>
+                    <div class="skill-card-back">
+                        <p>Flexbox/Grid</p>
+                        <p>Animations</p>
+                        <p>Responsive</p>
+                    </div>
+                </div>
             </div>
+            <div class="skill-card-3d" data-skill="JS">
+                <div class="skill-card-inner">
+                    <div class="skill-card-front">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript</span>
+                        <div class="skill-level">92%</div>
+                    </div>
+                    <div class="skill-card-back">
+                        <p>ES6+</p>
+                        <p>Async/Await</p>
+                        <p>DOM manipulation</p>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-card-3d" data-skill="React">
+                <div class="skill-card-inner">
+                    <div class="skill-card-front">
+                        <i class="fab fa-react"></i>
+                        <span>React.js</span>
+                        <div class="skill-level">88%</div>
+                    </div>
+                    <div class="skill-card-back">
+                        <p>Hooks</p>
+                        <p>Redux</p>
+                        <p>Next.js</p>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-card-3d" data-skill="Vue">
+                <div class="skill-card-inner">
+                    <div class="skill-card-front">
+                        <i class="fab fa-vuejs"></i>
+                        <span>Vue.js</span>
+                        <div class="skill-level">75%</div>
+                    </div>
+                    <div class="skill-card-back">
+                        <p>Composition API</p>
+                        <p>Vuex</p>
+                        <p>Nuxt.js</p>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-card-3d" data-skill="Node">
+                <div class="skill-card-inner">
+                    <div class="skill-card-front">
+                        <i class="fab fa-node-js"></i>
+                        <span>Node.js</span>
+                        <div class="skill-level">85%</div>
+                    </div>
+                    <div class="skill-card-back">
+                        <p>Express</p>
+                        <p>REST API</p>
+                        <p>WebSocket</p>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-card-3d" data-skill="Python">
+                <div class="skill-card-inner">
+                    <div class="skill-card-front">
+                        <i class="fab fa-python"></i>
+                        <span>Python</span>
+                        <div class="skill-level">80%</div>
+                    </div>
+                    <div class="skill-card-back">
+                        <p>Django</p>
+                        <p>Flask</p>
+                        <p>AI/ML</p>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-card-3d" data-skill="PHP">
+                <div class="skill-card-inner">
+                    <div class="skill-card-front">
+                        <i class="fab fa-php"></i>
+                        <span>PHP</span>
+                        <div class="skill-level">70%</div>
+                    </div>
+                    <div class="skill-card-back">
+                        <p>Laravel</p>
+                        <p>WordPress</p>
+                        <p>MVC</p>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-card-3d" data-skill="MongoDB">
+                <div class="skill-card-inner">
+                    <div class="skill-card-front">
+                        <i class="fas fa-database"></i>
+                        <span>MongoDB</span>
+                        <div class="skill-level">82%</div>
+                    </div>
+                    <div class="skill-card-back">
+                        <p>Aggregation</p>
+                        <p>Indexing</p>
+                        <p>Atlas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-card-3d" data-skill="MySQL">
+                <div class="skill-card-inner">
+                    <div class="skill-card-front">
+                        <i class="fas fa-database"></i>
+                        <span>MySQL</span>
+                        <div class="skill-level">78%</div>
+                    </div>
+                    <div class="skill-card-back">
+                        <p>Optimization</p>
+                        <p>JOINs</p>
+                        <p>Stored Procedures</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tech-cloud">
+            <span><i class="fab fa-html5"></i></span>
+            <span><i class="fab fa-css3-alt"></i></span>
+            <span><i class="fab fa-js"></i></span>
+            <span><i class="fab fa-react"></i></span>
+            <span><i class="fab fa-vuejs"></i></span>
+            <span><i class="fab fa-node"></i></span>
+            <span><i class="fab fa-python"></i></span>
+            <span><i class="fab fa-php"></i></span>
+            <span><i class="fas fa-database"></i></span>
+            <span><i class="fab fa-git-alt"></i></span>
+            <span><i class="fab fa-docker"></i></span>
+            <span><i class="fab fa-aws"></i></span>
         </div>
     </div>
 </section>
@@ -350,84 +419,18 @@
             <h2>Loyihalar</h2>
             <div class="section-line"></div>
         </div>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-thumb">
-                    <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
-                    <div class="project-overlay">
-                        <a href="#"><i class="fas fa-link"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <h3>E-Commerce Platform</h3>
-                    <p>Magento asosida to'liq online-do'kon tizimi</p>
-                    <div class="project-tags">
-                        <span>React</span>
-                        <span>Node.js</span>
-                        <span>MongoDB</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-thumb">
-                    <div class="project-icon"><i class="fas fa-robot"></i></div>
-                    <div class="project-overlay">
-                        <a href="#"><i class="fas fa-link"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <h3>AI Assistant Bot</h3>
-                    <p>Telegram bot + Python AI yordamchi</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>AI</span>
-                        <span>Telegram</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-thumb">
-                    <div class="project-icon"><i class="fas fa-tasks"></i></div>
-                    <div class="project-overlay">
-                        <a href="#"><i class="fas fa-link"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <h3>Task Manager Pro</h3>
-                    <p>Vue.js + Firebase bilan vazifalar boshqaruvi</p>
-                    <div class="project-tags">
-                        <span>Vue.js</span>
-                        <span>Firebase</span>
-                        <span>Tailwind</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-thumb">
-                    <div class="project-icon"><i class="fas fa-chart-line"></i></div>
-                    <div class="project-overlay">
-                        <a href="#"><i class="fas fa-link"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <h3>Analytics Dashboard</h3>
-                    <p>Real-time ma'lumotlar vizualizatsiyasi</p>
-                    <div class="project-tags">
-                        <span>D3.js</span>
-                        <span>Express</span>
-                        <span>PostgreSQL</span>
-                    </div>
-                </div>
-            </div>
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Loyihalar JavaScript orqali qo'shiladi -->
+        </div>
+        <div class="projects-actions">
+            <button class="btn btn-outline" id="showMoreBtn">
+                <i class="fas fa-plus"></i> Ko'proq loyihalar
+            </button>
         </div>
     </div>
 </section>
 
-<!-- ===== SERVICES (Xizmatlar - Buyurtma bo'limi) ===== -->
+<!-- ===== SERVICES ===== -->
 <section id="services" class="services">
     <div class="container">
         <div class="section-header">
@@ -435,144 +438,55 @@
             <h2>Xizmatlar</h2>
             <div class="section-line"></div>
         </div>
-        <p class="services-desc">
-            <i class="fas fa-star"></i> 
-            Sizning loyihangiz uchun eng yaxshi echimlarni taklif qilaman
-            <i class="fas fa-star"></i>
-        </p>
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-globe"></i>
-                    <div class="service-glow"></div>
-                </div>
+                <div class="service-icon"><i class="fas fa-globe"></i></div>
                 <h3>Web Sayt Yaratish</h3>
-                <p>Corporate, blog, landing page va boshqa web saytlar</p>
+                <p>Corporate, blog, landing page</p>
                 <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Responsive dizayn</li>
-                    <li><i class="fas fa-check"></i> SEO optimallashtirish</li>
+                    <li><i class="fas fa-check"></i> Responsive</li>
+                    <li><i class="fas fa-check"></i> SEO</li>
                     <li><i class="fas fa-check"></i> Tez yuklanish</li>
                 </ul>
-                <div class="service-price">
-                    <span class="price">$500</span>
-                    <span class="price-desc">dan boshlab</span>
-                </div>
-                <a href="#contact" class="btn btn-primary btn-sm">
-                    <i class="fas fa-shopping-cart"></i> Buyurtma
-                </a>
+                <div class="service-price">$500 dan</div>
+                <a href="#contact" class="btn btn-primary btn-sm">Buyurtma</a>
             </div>
-
             <div class="service-card featured">
                 <div class="service-badge">🔥 Mashhur</div>
-                <div class="service-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <div class="service-glow"></div>
-                </div>
+                <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
                 <h3>E-Commerce</h3>
-                <p>To'liq funkcional online-do'kon tizimi</p>
+                <p>Online-do'kon tizimi</p>
                 <ul class="service-features">
                     <li><i class="fas fa-check"></i> To'lov tizimi</li>
                     <li><i class="fas fa-check"></i> Admin panel</li>
                     <li><i class="fas fa-check"></i> Yetkazib berish</li>
                 </ul>
-                <div class="service-price">
-                    <span class="price">$1500</span>
-                    <span class="price-desc">dan boshlab</span>
-                </div>
-                <a href="#contact" class="btn btn-primary btn-sm">
-                    <i class="fas fa-shopping-cart"></i> Buyurtma
-                </a>
+                <div class="service-price">$1500 dan</div>
+                <a href="#contact" class="btn btn-primary btn-sm">Buyurtma</a>
             </div>
-
             <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                    <div class="service-glow"></div>
-                </div>
+                <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
                 <h3>Mobil Ilova</h3>
-                <p>Android va iOS uchun native va cross-platform ilovalar</p>
+                <p>Android va iOS ilovalar</p>
                 <ul class="service-features">
                     <li><i class="fas fa-check"></i> Cross-platform</li>
                     <li><i class="fas fa-check"></i> Push xabarlar</li>
-                    <li><i class="fas fa-check"></i> Backend integrasiya</li>
+                    <li><i class="fas fa-check"></i> Backend</li>
                 </ul>
-                <div class="service-price">
-                    <span class="price">$2000</span>
-                    <span class="price-desc">dan boshlab</span>
-                </div>
-                <a href="#contact" class="btn btn-primary btn-sm">
-                    <i class="fas fa-shopping-cart"></i> Buyurtma
-                </a>
+                <div class="service-price">$2000 dan</div>
+                <a href="#contact" class="btn btn-primary btn-sm">Buyurtma</a>
             </div>
-
             <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-robot"></i>
-                    <div class="service-glow"></div>
-                </div>
+                <div class="service-icon"><i class="fas fa-robot"></i></div>
                 <h3>AI & Bot</h3>
-                <p>Telegram bot, AI yordamchi va avtomatlashtirish</p>
+                <p>Telegram bot va AI yordamchi</p>
                 <ul class="service-features">
                     <li><i class="fas fa-check"></i> Telegram bot</li>
                     <li><i class="fas fa-check"></i> AI integrasiya</li>
                     <li><i class="fas fa-check"></i> Avtomatlashtirish</li>
                 </ul>
-                <div class="service-price">
-                    <span class="price">$800</span>
-                    <span class="price-desc">dan boshlab</span>
-                </div>
-                <a href="#contact" class="btn btn-primary btn-sm">
-                    <i class="fas fa-shopping-cart"></i> Buyurtma
-                </a>
-            </div>
-        </div>
-        <div class="services-cta">
-            <p>Maxsus loyihangiz bormi? <a href="#contact" class="gradient-text">Bog'laning</a></p>
-        </div>
-    </div>
-</section>
-
-<!-- ===== TESTIMONIALS ===== -->
-<section class="testimonials">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-number">05</span>
-            <h2>Mijozlar fikri</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <i class="fas fa-quote-left"></i>
-                <p>Oxunjon bilan ishlash ajoyib! Loyihamizni muddatidan oldin va sifatli yakunladi.</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
-                    <div>
-                        <h4>Azizbek Karimov</h4>
-                        <span>CEO, TechStart</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <i class="fas fa-quote-left"></i>
-                <p>Judayam professional va kreativ dasturchi. Har bir detailga e'tibor beradi.</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
-                    <div>
-                        <h4>Dilnoza Rahimova</h4>
-                        <span>Marketing Director</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <i class="fas fa-quote-left"></i>
-                <p>Eng yaxshi dasturchilardan biri. Tavsiya qilaman! 10/10</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
-                    <div>
-                        <h4>Jasur Nematov</h4>
-                        <span>Startup Founder</span>
-                    </div>
-                </div>
+                <div class="service-price">$800 dan</div>
+                <a href="#contact" class="btn btn-primary btn-sm">Buyurtma</a>
             </div>
         </div>
     </div>
@@ -582,13 +496,13 @@
 <section id="contact" class="contact">
     <div class="container">
         <div class="section-header">
-            <span class="section-number">06</span>
+            <span class="section-number">05</span>
             <h2>Aloqa</h2>
             <div class="section-line"></div>
         </div>
         <div class="contact-wrapper">
             <div class="contact-left">
-                <h3>Keling <br /><span class="gradient-text">bog'lanamiz</span></h3>
+                <h3>Keling <span class="gradient-text">bog'lanamiz</span></h3>
                 <p>Loyihangiz bormi? Men bilan bog'lanishingiz mumkin</p>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
@@ -624,7 +538,7 @@
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="form-group">
-                    <input type="email" placeholder="Email manzilingiz" required />
+                    <input type="email" placeholder="Email" required />
                     <i class="fas fa-envelope"></i>
                 </div>
                 <div class="form-group">
@@ -632,12 +546,11 @@
                     <i class="fas fa-tag"></i>
                 </div>
                 <div class="form-group">
-                    <textarea rows="4" placeholder="Xabaringiz..." required></textarea>
+                    <textarea rows="4" placeholder="Xabar" required></textarea>
                     <i class="fas fa-pencil-alt"></i>
                 </div>
                 <button type="submit" class="btn btn-primary btn-full">
-                    <i class="fas fa-paper-plane"></i> Xabar yuborish
-                    <span class="btn-shimmer"></span>
+                    <i class="fas fa-paper-plane"></i> Yuborish
                 </button>
             </form>
         </div>
@@ -651,11 +564,6 @@
             <div class="footer-brand">
                 <a href="#" class="logo"><i class="fas fa-crown"></i> Oxunjon</a>
                 <p>Zamonaviy veb-ilovalar va mobil dasturlar yarataman.</p>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-telegram-plane"></i></a>
-                </div>
             </div>
             <div class="footer-links">
                 <h4>Menyu</h4>
@@ -663,30 +571,28 @@
                 <a href="#about">Men</a>
                 <a href="#skills">Ko'nikmalar</a>
                 <a href="#projects">Loyihalar</a>
-                <a href="#services">Xizmatlar</a>
             </div>
             <div class="footer-links">
                 <h4>Xizmatlar</h4>
                 <a href="#services">Web Sayt</a>
                 <a href="#services">E-Commerce</a>
                 <a href="#services">Mobil Ilova</a>
-                <a href="#services">AI & Bot</a>
             </div>
             <div class="footer-links">
                 <h4>Bog'lanish</h4>
                 <a href="mailto:oxunjon@example.com"><i class="fas fa-envelope"></i> Email</a>
                 <a href="tel:+998901234567"><i class="fas fa-phone"></i> Telefon</a>
-                <a href="https://t.me/oxunjon_dev" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+                <a href="https://t.me/oxunjon_dev"><i class="fab fa-telegram"></i> Telegram</a>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Oxunjon. Barcha huquqlar himoyalangan.</p>
-            <p>❤️ bilan yaratilgan | <i class="fas fa-code"></i> 4+ yillik tajriba</p>
+            <p>❤️ bilan yaratilgan</p>
         </div>
     </div>
 </footer>
 
-<!-- ===== SCROLL TO TOP ===== -->
+<!-- ===== SCROLL TOP ===== -->
 <button class="scroll-top" id="scrollTop">
     <i class="fas fa-chevron-up"></i>
 </button>
