@@ -10,43 +10,29 @@
 </head>
 <body>
 
-<!-- ===== PRELOADER (Epic kirish + kompyuterda ishlayotgan odamcha) ===== -->
+<!-- ===== PRELOADER ===== -->
 <div class="preloader" id="preloader">
     <div class="preloader-container">
-        <!-- Kompyuterda ishlayotgan odamcha animatsiyasi -->
-        <div class="preloader-dev">
-            <div class="dev-computer">
-                <div class="dev-screen">
-                    <div class="dev-code">
-                        <span class="dev-line"></span>
-                        <span class="dev-line"></span>
-                        <span class="dev-line"></span>
-                        <span class="dev-line"></span>
-                        <span class="dev-cursor"></span>
-                    </div>
-                </div>
-                <div class="dev-keyboard"></div>
-                <div class="dev-person">
-                    <div class="dev-head"></div>
-                    <div class="dev-body"></div>
-                    <div class="dev-arm-left"></div>
-                    <div class="dev-arm-right"></div>
-                </div>
-            </div>
+        <div class="preloader-logo-ring">
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="var(--border)" stroke-width="2"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#grad)" stroke-width="3"
+                    stroke-dasharray="280" stroke-dashoffset="280"
+                    style="animation: preloaderCircle 2s ease-in-out infinite"/>
+                <defs>
+                    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#6c5ce7"/>
+                        <stop offset="100%" style="stop-color:#a29bfe"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span class="logo-text">O</span>
         </div>
-        
-        <div class="preloader-text">
-            <span class="letter" style="--i:0">O</span>
-            <span class="letter" style="--i:1">x</span>
-            <span class="letter" style="--i:2">u</span>
-            <span class="letter" style="--i:3">n</span>
-            <span class="letter" style="--i:4">j</span>
-            <span class="letter" style="--i:5">o</span>
-            <span class="letter" style="--i:6">n</span>
+        <div class="preloader-progress-wrap">
+            <div class="preloader-progress-bar" id="progressBar"></div>
         </div>
-        <div class="preloader-sub">Loading portfolio...</div>
-        <div class="preloader-progress">
-            <div class="progress-bar" id="progressBar"></div>
+        <div class="preloader-status">
+            Yuklanmoqda<span>.</span><span>.</span><span>.</span>
         </div>
     </div>
 </div>
@@ -63,19 +49,27 @@
                 <i class="fas fa-crown"></i>
                 <span>Oxunjon</span>
             </a>
-            <ul class="nav-menu">
-                <li><a href="#home" class="active"><i class="fas fa-home"></i> Bosh</a></li>
-                <li><a href="#about"><i class="fas fa-user-astronaut"></i> Men</a></li>
-                <li><a href="#skills"><i class="fas fa-brain"></i> Ko'nikmalar</a></li>
-                <li><a href="#projects"><i class="fas fa-rocket"></i> Loyihalar</a></li>
-                <li><a href="#services"><i class="fas fa-cogs"></i> Xizmatlar</a></li>
-                <li><a href="#contact"><i class="fas fa-paper-plane"></i> Aloqa</a></li>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active" data-key="nav-home"><i class="fas fa-home"></i> <span>Bosh</span></a></li>
+                <li><a href="#about" data-key="nav-about"><i class="fas fa-user-astronaut"></i> <span>Men</span></a></li>
+                <li><a href="#skills" data-key="nav-skills"><i class="fas fa-brain"></i> <span>Ko'nikmalar</span></a></li>
+                <li><a href="#projects" data-key="nav-projects"><i class="fas fa-rocket"></i> <span>Loyihalar</span></a></li>
+                <li><a href="#services" data-key="nav-services"><i class="fas fa-cogs"></i> <span>Xizmatlar</span></a></li>
+                <li><a href="#contact" data-key="nav-contact"><i class="fas fa-paper-plane"></i> <span>Aloqa</span></a></li>
             </ul>
             <div class="nav-actions">
-                <a href="https://t.me/oxunjon_dev" target="_blank" class="admin-btn">
-                    <i class="fas fa-user-shield"></i>
-                    <span>Admin</span>
-                </a>
+                <div class="lang-selector">
+                    <button class="lang-btn" id="langBtn">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLang">UZ</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button data-lang="uz" class="active-lang">🇺🇿 O'zbekcha</button>
+                        <button data-lang="ru">🇷🇺 Русский</button>
+                        <button data-lang="en">🇬🇧 English</button>
+                    </div>
+                </div>
                 <button class="theme-toggle" id="themeToggle">
                     <i class="fas fa-moon"></i>
                 </button>
@@ -87,7 +81,7 @@
     </div>
 </nav>
 
-<!-- ===== HERO (Bosh sahifa) ===== -->
+<!-- ===== HERO ===== -->
 <section id="home" class="hero">
     <div class="hero-bg">
         <div class="gradient-orb orb1"></div>
@@ -99,10 +93,10 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="pulse-dot"></span>
-                    Open to Work
+                    <span data-key="hero-badge">Open to Work</span>
                 </div>
                 <h1 class="hero-title">
-                    Salom, men <br />
+                    <span data-key="hero-greeting">Salom, men</span> <br />
                     <span class="gradient-text">Oxunjon</span>
                 </h1>
                 <div class="hero-typing">
@@ -110,15 +104,15 @@
                     <span class="typing-text"></span>
                 </div>
                 <p class="hero-desc">
-                    <span class="highlight-text">Full-Stack Dasturchi</span> | 
-                    4+ yillik tajriba | 50+ loyiha
+                    <span class="highlight-text" data-key="hero-highlight">Full-Stack Dasturchi</span>
+                    <span data-key="hero-experience"> | 4+ yillik tajriba | 50+ loyiha</span>
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">
-                        <i class="fas fa-rocket"></i> Loyihalar
+                        <i class="fas fa-rocket"></i> <span data-key="hero-projects">Loyihalar</span>
                     </a>
                     <a href="#contact" class="btn btn-outline">
-                        <i class="fas fa-paper-plane"></i> Bog'lanish
+                        <i class="fas fa-paper-plane"></i> <span data-key="hero-contact">Bog'lanish</span>
                     </a>
                 </div>
                 <div class="hero-social">
@@ -130,7 +124,6 @@
             </div>
             <div class="hero-visual">
                 <div class="hero-avatar-wrapper">
-                    <!-- Yumaloq ichida rasm + V + PHP aylana -->
                     <div class="avatar-container">
                         <div class="avatar-ring">
                             <div class="ring-text">PHP</div>
@@ -141,8 +134,6 @@
                         <div class="avatar-inner">
                             <div class="avatar-image">
                                 <i class="fas fa-user-circle"></i>
-                                <!-- Rasm qo'yish uchun: -->
-                                <!-- <img src="your-photo.jpg" alt="Oxunjon" /> -->
                             </div>
                             <div class="avatar-v-logo">
                                 <span class="v-text">V</span>
@@ -163,17 +154,17 @@
         </div>
     </div>
     <div class="scroll-indicator">
-        <span>Scroll</span>
+        <span data-key="scroll">Scroll</span>
         <i class="fas fa-chevron-down"></i>
     </div>
 </section>
 
-<!-- ===== ABOUT (Men sahifasi) ===== -->
+<!-- ===== ABOUT ===== -->
 <section id="about" class="about">
     <div class="container">
         <div class="section-header">
             <span class="section-number">01</span>
-            <h2>Men haqimda</h2>
+            <h2 data-key="about-title">Men haqimda</h2>
             <div class="section-line"></div>
         </div>
         <div class="about-wrapper">
@@ -182,61 +173,58 @@
                     <div class="about-img-ring"></div>
                     <div class="about-img-inner">
                         <i class="fas fa-user-astronaut"></i>
-                        <!-- Rasm qo'yish uchun: -->
-                        <!-- <img src="about-photo.jpg" alt="Oxunjon" /> -->
                     </div>
                 </div>
             </div>
             <div class="about-content">
-                <h3>Men <span class="gradient-text">Oxunjon</span></h3>
+                <h3><span data-key="about-me">Men</span> <span class="gradient-text">Oxunjon</span></h3>
                 <p class="about-bio">
                     <i class="fas fa-quote-left"></i>
-                    Full-Stack dasturchi, zamonaviy veb-ilovalar va mobil dasturlar yarataman.
-                    Har bir loyihaga kreativ yondashaman va sifatli natijalarni taqdim etaman.
+                    <span data-key="about-bio">Full-Stack dasturchi, zamonaviy veb-ilovalar va mobil dasturlar yarataman. Har bir loyihaga kreativ yondashaman va sifatli natijalarni taqdim etaman.</span>
                     <i class="fas fa-quote-right"></i>
                 </p>
                 <div class="about-info-grid">
                     <div class="about-info-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <span>Manzil</span>
-                            <p>Toshkent, O'zbekiston</p>
+                            <span data-key="about-location">Manzil</span>
+                            <p data-key="about-location-value">Toshkent, O'zbekiston</p>
                         </div>
                     </div>
                     <div class="about-info-item">
                         <i class="fas fa-graduation-cap"></i>
                         <div>
-                            <span>Ta'lim</span>
-                            <p>TATU, Kompyuter injiniringi</p>
+                            <span data-key="about-education">Ta'lim</span>
+                            <p data-key="about-education-value">TATU, Kompyuter injiniringi</p>
                         </div>
                     </div>
                     <div class="about-info-item">
                         <i class="fas fa-briefcase"></i>
                         <div>
-                            <span>Hozirgi</span>
-                            <p>Senior Dasturchi @ TechCorp</p>
+                            <span data-key="about-current">Hozirgi</span>
+                            <p data-key="about-current-value">Senior Dasturchi @ TechCorp</p>
                         </div>
                     </div>
                     <div class="about-info-item">
                         <i class="fas fa-award"></i>
                         <div>
-                            <span>Sertifikatlar</span>
-                            <p>AWS, React, Node.js</p>
+                            <span data-key="about-certificates">Sertifikatlar</span>
+                            <p data-key="about-certificates-value">AWS, React, Node.js</p>
                         </div>
                     </div>
                 </div>
                 <div class="about-stats">
                     <div class="stat-card">
                         <span class="stat-number" data-count="50">0</span>
-                        <span class="stat-label">Loyihalar</span>
+                        <span class="stat-label" data-key="stat-projects">Loyihalar</span>
                     </div>
                     <div class="stat-card">
                         <span class="stat-number" data-count="4">0</span>
-                        <span class="stat-label">Yillik tajriba</span>
+                        <span class="stat-label" data-key="stat-experience">Yillik tajriba</span>
                     </div>
                     <div class="stat-card">
                         <span class="stat-number" data-count="30">0</span>
-                        <span class="stat-label">Mijozlar</span>
+                        <span class="stat-label" data-key="stat-clients">Mijozlar</span>
                     </div>
                 </div>
             </div>
@@ -244,12 +232,12 @@
     </div>
 </section>
 
-<!-- ===== SKILLS (Yangi 3D ko'nikmalar) ===== -->
+<!-- ===== SKILLS ===== -->
 <section id="skills" class="skills">
     <div class="container">
         <div class="section-header">
             <span class="section-number">02</span>
-            <h2>Ko'nikmalar</h2>
+            <h2 data-key="skills-title">Ko'nikmalar</h2>
             <div class="section-line"></div>
         </div>
         <div class="skills-showcase">
@@ -416,15 +404,13 @@
     <div class="container">
         <div class="section-header">
             <span class="section-number">03</span>
-            <h2>Loyihalar</h2>
+            <h2 data-key="projects-title">Loyihalar</h2>
             <div class="section-line"></div>
         </div>
-        <div class="projects-grid" id="projectsGrid">
-            <!-- Loyihalar JavaScript orqali qo'shiladi -->
-        </div>
+        <div class="projects-grid" id="projectsGrid"></div>
         <div class="projects-actions">
             <button class="btn btn-outline" id="showMoreBtn">
-                <i class="fas fa-plus"></i> Ko'proq loyihalar
+                <i class="fas fa-plus"></i> <span data-key="projects-more">Ko'proq loyihalar</span>
             </button>
         </div>
     </div>
@@ -435,58 +421,58 @@
     <div class="container">
         <div class="section-header">
             <span class="section-number">04</span>
-            <h2>Xizmatlar</h2>
+            <h2 data-key="services-title">Xizmatlar</h2>
             <div class="section-line"></div>
         </div>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-globe"></i></div>
-                <h3>Web Sayt Yaratish</h3>
-                <p>Corporate, blog, landing page</p>
+                <h3 data-key="service-web-title">Web Sayt Yaratish</h3>
+                <p data-key="service-web-desc">Corporate, blog, landing page</p>
                 <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Responsive</li>
-                    <li><i class="fas fa-check"></i> SEO</li>
-                    <li><i class="fas fa-check"></i> Tez yuklanish</li>
+                    <li><i class="fas fa-check"></i> <span data-key="service-web-f1">Responsive</span></li>
+                    <li><i class="fas fa-check"></i> <span data-key="service-web-f2">SEO</span></li>
+                    <li><i class="fas fa-check"></i> <span data-key="service-web-f3">Tez yuklanish</span></li>
                 </ul>
                 <div class="service-price">$500 dan</div>
-                <a href="#contact" class="btn btn-primary btn-sm">Buyurtma</a>
+                <a href="#contact" class="btn btn-primary btn-sm" data-key="service-order">Buyurtma</a>
             </div>
             <div class="service-card featured">
-                <div class="service-badge">🔥 Mashhur</div>
+                <div class="service-badge" data-key="service-badge">🔥 Mashhur</div>
                 <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-                <h3>E-Commerce</h3>
-                <p>Online-do'kon tizimi</p>
+                <h3 data-key="service-ecom-title">E-Commerce</h3>
+                <p data-key="service-ecom-desc">Online-do'kon tizimi</p>
                 <ul class="service-features">
-                    <li><i class="fas fa-check"></i> To'lov tizimi</li>
-                    <li><i class="fas fa-check"></i> Admin panel</li>
-                    <li><i class="fas fa-check"></i> Yetkazib berish</li>
+                    <li><i class="fas fa-check"></i> <span data-key="service-ecom-f1">To'lov tizimi</span></li>
+                    <li><i class="fas fa-check"></i> <span data-key="service-ecom-f2">Admin panel</span></li>
+                    <li><i class="fas fa-check"></i> <span data-key="service-ecom-f3">Yetkazib berish</span></li>
                 </ul>
                 <div class="service-price">$1500 dan</div>
-                <a href="#contact" class="btn btn-primary btn-sm">Buyurtma</a>
+                <a href="#contact" class="btn btn-primary btn-sm" data-key="service-order">Buyurtma</a>
             </div>
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-                <h3>Mobil Ilova</h3>
-                <p>Android va iOS ilovalar</p>
+                <h3 data-key="service-mobile-title">Mobil Ilova</h3>
+                <p data-key="service-mobile-desc">Android va iOS ilovalar</p>
                 <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Cross-platform</li>
-                    <li><i class="fas fa-check"></i> Push xabarlar</li>
-                    <li><i class="fas fa-check"></i> Backend</li>
+                    <li><i class="fas fa-check"></i> <span data-key="service-mobile-f1">Cross-platform</span></li>
+                    <li><i class="fas fa-check"></i> <span data-key="service-mobile-f2">Push xabarlar</span></li>
+                    <li><i class="fas fa-check"></i> <span data-key="service-mobile-f3">Backend</span></li>
                 </ul>
                 <div class="service-price">$2000 dan</div>
-                <a href="#contact" class="btn btn-primary btn-sm">Buyurtma</a>
+                <a href="#contact" class="btn btn-primary btn-sm" data-key="service-order">Buyurtma</a>
             </div>
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-robot"></i></div>
-                <h3>AI & Bot</h3>
-                <p>Telegram bot va AI yordamchi</p>
+                <h3 data-key="service-ai-title">AI & Bot</h3>
+                <p data-key="service-ai-desc">Telegram bot va AI yordamchi</p>
                 <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Telegram bot</li>
-                    <li><i class="fas fa-check"></i> AI integrasiya</li>
-                    <li><i class="fas fa-check"></i> Avtomatlashtirish</li>
+                    <li><i class="fas fa-check"></i> <span data-key="service-ai-f1">Telegram bot</span></li>
+                    <li><i class="fas fa-check"></i> <span data-key="service-ai-f2">AI integrasiya</span></li>
+                    <li><i class="fas fa-check"></i> <span data-key="service-ai-f3">Avtomatlashtirish</span></li>
                 </ul>
                 <div class="service-price">$800 dan</div>
-                <a href="#contact" class="btn btn-primary btn-sm">Buyurtma</a>
+                <a href="#contact" class="btn btn-primary btn-sm" data-key="service-order">Buyurtma</a>
             </div>
         </div>
     </div>
@@ -497,32 +483,32 @@
     <div class="container">
         <div class="section-header">
             <span class="section-number">05</span>
-            <h2>Aloqa</h2>
+            <h2 data-key="contact-title">Aloqa</h2>
             <div class="section-line"></div>
         </div>
         <div class="contact-wrapper">
             <div class="contact-left">
-                <h3>Keling <span class="gradient-text">bog'lanamiz</span></h3>
-                <p>Loyihangiz bormi? Men bilan bog'lanishingiz mumkin</p>
+                <h3><span data-key="contact-greeting">Keling</span> <span class="gradient-text" data-key="contact-greeting-highlight">bog'lanamiz</span></h3>
+                <p data-key="contact-desc">Loyihangiz bormi? Men bilan bog'lanishingiz mumkin</p>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <div>
-                        <span>Email</span>
+                        <span data-key="contact-email">Email</span>
                         <p>oxunjon@example.com</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
-                        <span>Telefon</span>
+                        <span data-key="contact-phone">Telefon</span>
                         <p>+998 90 123 45 67</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <div>
-                        <span>Manzil</span>
-                        <p>Toshkent, O'zbekiston</p>
+                        <span data-key="contact-location">Manzil</span>
+                        <p data-key="contact-location-value">Toshkent, O'zbekiston</p>
                     </div>
                 </div>
                 <div class="contact-social">
@@ -534,23 +520,23 @@
             </div>
             <form class="contact-form" id="contactForm">
                 <div class="form-group">
-                    <input type="text" placeholder="Ismingiz" required />
+                    <input type="text" placeholder="Ismingiz" required data-key="contact-name-placeholder" />
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="form-group">
-                    <input type="email" placeholder="Email" required />
+                    <input type="email" placeholder="Email" required data-key="contact-email-placeholder" />
                     <i class="fas fa-envelope"></i>
                 </div>
                 <div class="form-group">
-                    <input type="text" placeholder="Mavzu" />
+                    <input type="text" placeholder="Mavzu" data-key="contact-subject-placeholder" />
                     <i class="fas fa-tag"></i>
                 </div>
                 <div class="form-group">
-                    <textarea rows="4" placeholder="Xabar" required></textarea>
+                    <textarea rows="4" placeholder="Xabar" required data-key="contact-message-placeholder"></textarea>
                     <i class="fas fa-pencil-alt"></i>
                 </div>
                 <button type="submit" class="btn btn-primary btn-full">
-                    <i class="fas fa-paper-plane"></i> Yuborish
+                    <i class="fas fa-paper-plane"></i> <span data-key="contact-send">Yuborish</span>
                 </button>
             </form>
         </div>
@@ -563,31 +549,31 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="#" class="logo"><i class="fas fa-crown"></i> Oxunjon</a>
-                <p>Zamonaviy veb-ilovalar va mobil dasturlar yarataman.</p>
+                <p data-key="footer-desc">Zamonaviy veb-ilovalar va mobil dasturlar yarataman.</p>
             </div>
             <div class="footer-links">
-                <h4>Menyu</h4>
-                <a href="#home">Bosh</a>
-                <a href="#about">Men</a>
-                <a href="#skills">Ko'nikmalar</a>
-                <a href="#projects">Loyihalar</a>
+                <h4 data-key="footer-menu">Menyu</h4>
+                <a href="#home" data-key="nav-home">Bosh</a>
+                <a href="#about" data-key="nav-about">Men</a>
+                <a href="#skills" data-key="nav-skills">Ko'nikmalar</a>
+                <a href="#projects" data-key="nav-projects">Loyihalar</a>
             </div>
             <div class="footer-links">
-                <h4>Xizmatlar</h4>
-                <a href="#services">Web Sayt</a>
-                <a href="#services">E-Commerce</a>
-                <a href="#services">Mobil Ilova</a>
+                <h4 data-key="footer-services">Xizmatlar</h4>
+                <a href="#services" data-key="service-web-title">Web Sayt</a>
+                <a href="#services" data-key="service-ecom-title">E-Commerce</a>
+                <a href="#services" data-key="service-mobile-title">Mobil Ilova</a>
             </div>
             <div class="footer-links">
-                <h4>Bog'lanish</h4>
+                <h4 data-key="footer-contact">Bog'lanish</h4>
                 <a href="mailto:oxunjon@example.com"><i class="fas fa-envelope"></i> Email</a>
                 <a href="tel:+998901234567"><i class="fas fa-phone"></i> Telefon</a>
                 <a href="https://t.me/oxunjon_dev"><i class="fab fa-telegram"></i> Telegram</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Oxunjon. Barcha huquqlar himoyalangan.</p>
-            <p>❤️ bilan yaratilgan</p>
+            <p data-key="footer-copyright">&copy; 2026 Oxunjon. Barcha huquqlar himoyalangan.</p>
+            <p data-key="footer-made">❤️ bilan yaratilgan</p>
         </div>
     </div>
 </footer>
