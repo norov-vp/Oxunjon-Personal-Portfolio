@@ -1,558 +1,487 @@
-// ===== PRELOADER =====
-document.addEventListener('DOMContentLoaded', () => {
-    const preloader = document.getElementById('preloader');
-    setTimeout(() => {
-        preloader.classList.add('hidden');
-    }, 2800);
+// =========================================
+// PRELOADER
+// =========================================
+window.addEventListener("load", function () {
+    let percent = 0;
+    const fill = document.getElementById("preloaderFill");
+    const percentText = document.getElementById("preloaderPercent");
+
+    const interval = setInterval(() => {
+        percent += Math.floor(Math.random() * 5) + 3;
+        if (percent >= 100) {
+            percent = 100;
+            clearInterval(interval);
+            setTimeout(() => {
+                document.body.classList.add("loaded");
+                setTimeout(() => {
+                    document.getElementById("preloader").style.display = "none";
+                }, 600);
+            }, 400);
+        }
+        fill.style.width = percent + "%";
+        percentText.textContent = percent + "%";
+    }, 80);
 });
 
-// ===== CURSOR =====
-const cursorDot = document.querySelector('.cursor-dot');
-const cursorOutline = document.querySelector('.cursor-outline');
+// =========================================
+// AOS INIT
+// =========================================
+AOS.init({
+    duration: 800,
+    once: true,
+    offset: 100,
+    easing: "ease-out-cubic",
+});
 
-if (cursorDot && cursorOutline) {
-    document.addEventListener('mousemove', (e) => {
-        cursorDot.style.left = e.clientX + 'px';
-        cursorDot.style.top = e.clientY + 'px';
-        cursorOutline.style.left = e.clientX - 20 + 'px';
-        cursorOutline.style.top = e.clientY - 20 + 'px';
-    });
+// =========================================
+// TYPING EFFECT
+// =========================================
+const typingTexts = [
+    "Full-Stack Developer",
+    "Web Developer",
+    "Mobile Developer",
+    "AI Enthusiast",
+    "Problem Solver",
+    "Code Creator",
+];
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingElement = document.getElementById("typingText");
 
-    document.querySelectorAll('a, button').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursorOutline.style.width = '60px';
-            cursorOutline.style.height = '60px';
-            cursorOutline.style.borderColor = 'var(--secondary)';
-        });
-        el.addEventListener('mouseleave', () => {
-            cursorOutline.style.width = '40px';
-            cursorOutline.style.height = '40px';
-            cursorOutline.style.borderColor = 'var(--primary)';
-        });
-    });
-}
+function typeEffect() {
+    const currentText = typingTexts[textIndex];
 
-// ===== THEME =====
-const themeToggle = document.getElementById('themeToggle');
-const html = document.documentElement;
-
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const current = html.getAttribute('data-theme');
-        const newTheme = current === 'dark' ? 'light' : 'dark';
-        html.setAttribute('data-theme', newTheme);
-        themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-        localStorage.setItem('theme', newTheme);
-    });
-
-    // Saqlangan temani yuklash
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        html.setAttribute('data-theme', savedTheme);
-        themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+    if (isDeleting) {
+        typingElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typingElement.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
     }
+
+    let speed = isDeleting ? 40 : 80;
+
+    if (!isDeleting && charIndex === currentText.length) {
+        speed = 2000;
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % typingTexts.length;
+        speed = 500;
+    }
+
+    setTimeout(typeEffect, speed);
 }
 
-// ===== MOBILE MENU =====
-const menuToggle = document.getElementById('menuToggle');
-const navMenu = document.getElementById('navMenu');
+typeEffect();
 
-if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+// =========================================
+// COUNTER ANIMATION
+// =========================================
+function animateCounter(element, target) {
+    let current = 0;
+    const increment = Math.ceil(target / 60);
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        element.textContent = current + (target > 5 ? "+" : "");
+    }, 30);
+}
 
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            menuToggle.classList.remove('active');
-            navMenu.classList.remove('active');
+const statObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const statNum = el.querySelector(".stat-num");
+                if (statNum) {
+                    const count = parseInt(el.getAttribute("data-count"));
+                    if (!isNaN(count)) {
+                        animateCounter(statNum, count);
+                    }
+                }
+                statObserver.unobserve(el);
+            }
         });
+    }, { threshold: 0.5 }
+);
+
+document.querySelectorAll(".stat").forEach((el) => {
+    statObserver.observe(el);
+});
+
+// =========================================
+// NAVBAR ACTIVE LINK
+// =========================================
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-menu a");
+
+window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 150;
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+        }
     });
+
+    navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+        }
+    });
+});
+
+// =========================================
+// MOBILE MENU
+// =========================================
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
+
+menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    navMenu.classList.toggle("open");
+});
+
+navMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        navMenu.classList.remove("open");
+    });
+});
+
+// =========================================
+// THEME TOGGLE
+// =========================================
+const themeToggle = document.getElementById("themeToggle");
+const body = document.body;
+
+themeToggle.addEventListener("click", () => {
+    body.classList.toggle("light");
+    const icon = themeToggle.querySelector("i");
+    if (body.classList.contains("light")) {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+        localStorage.setItem("theme", "light");
+    } else {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+        localStorage.setItem("theme", "dark");
+    }
+});
+
+if (localStorage.getItem("theme") === "light") {
+    body.classList.add("light");
+    themeToggle.querySelector("i").classList.remove("fa-moon");
+    themeToggle.querySelector("i").classList.add("fa-sun");
 }
 
-// ===== TIL TANLASH =====
-const langBtn = document.getElementById('langBtn');
-const langDropdown = document.getElementById('langDropdown');
-const currentLangSpan = document.getElementById('currentLang');
+// =========================================
+// LANGUAGE DROPDOWN
+// =========================================
+const langToggle = document.getElementById("langToggle");
+const langDropdown = document.getElementById("langDropdown");
+const langOptions = langDropdown.querySelectorAll("button");
+const currentLangLabel = document.getElementById("currentLang");
 
-const translations = {
+langToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    langDropdown.classList.toggle("open");
+});
+
+document.addEventListener("click", () => {
+    langDropdown.classList.remove("open");
+});
+
+langOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+        const lang = option.getAttribute("data-lang");
+        setLanguage(lang);
+        langDropdown.classList.remove("open");
+
+        langOptions.forEach((o) => o.classList.remove("active"));
+        option.classList.add("active");
+
+        const langNames = { uz: "UZ", ru: "RU", en: "EN" };
+        currentLangLabel.textContent = langNames[lang] || "UZ";
+    });
+});
+
+const langData = {
     uz: {
-        'nav-home': 'Bosh',
-        'nav-about': 'Men',
-        'nav-skills': "Ko'nikmalar",
-        'nav-projects': 'Loyihalar',
-        'nav-services': 'Xizmatlar',
-        'nav-contact': 'Aloqa',
-        'hero-badge': 'Open to Work',
-        'hero-greeting': 'Salom, men',
-        'hero-highlight': 'Full-Stack Dasturchi',
-        'hero-experience': ' | 4+ yillik tajriba | 50+ loyiha',
-        'hero-projects': 'Loyihalar',
-        'hero-contact': "Bog'lanish",
-        'scroll': 'Scroll',
-        'about-title': "Men haqimda",
-        'about-me': 'Men',
-        'about-bio': "Full-Stack dasturchi, zamonaviy veb-ilovalar va mobil dasturlar yarataman. Har bir loyihaga kreativ yondashaman va sifatli natijalarni taqdim etaman.",
-        'about-location': 'Manzil',
-        'about-location-value': "Toshkent, O'zbekiston",
-        'about-education': "Ta'lim",
-        'about-education-value': 'TATU, Kompyuter injiniringi',
-        'about-current': 'Hozirgi',
-        'about-current-value': 'Senior Dasturchi @ TechCorp',
-        'about-certificates': 'Sertifikatlar',
-        'about-certificates-value': 'AWS, React, Node.js',
-        'stat-projects': 'Loyihalar',
-        'stat-experience': 'Yillik tajriba',
-        'stat-clients': 'Mijozlar',
-        'skills-title': "Ko'nikmalar",
-        'projects-title': 'Loyihalar',
-        'projects-more': "Ko'proq loyihalar",
-        'services-title': 'Xizmatlar',
-        'service-web-title': 'Web Sayt Yaratish',
-        'service-web-desc': 'Corporate, blog, landing page',
-        'service-web-f1': 'Responsive',
-        'service-web-f2': 'SEO',
-        'service-web-f3': 'Tez yuklanish',
-        'service-ecom-title': 'E-Commerce',
-        'service-ecom-desc': "Online-do'kon tizimi",
-        'service-ecom-f1': "To'lov tizimi",
-        'service-ecom-f2': 'Admin panel',
-        'service-ecom-f3': 'Yetkazib berish',
-        'service-mobile-title': 'Mobil Ilova',
-        'service-mobile-desc': 'Android va iOS ilovalar',
-        'service-mobile-f1': 'Cross-platform',
-        'service-mobile-f2': 'Push xabarlar',
-        'service-mobile-f3': 'Backend',
-        'service-ai-title': 'AI & Bot',
-        'service-ai-desc': 'Telegram bot va AI yordamchi',
-        'service-ai-f1': 'Telegram bot',
-        'service-ai-f2': 'AI integrasiya',
-        'service-ai-f3': 'Avtomatlashtirish',
-        'service-badge': '🔥 Mashhur',
-        'service-order': 'Buyurtma',
-        'contact-title': 'Aloqa',
-        'contact-greeting': 'Keling',
-        'contact-greeting-highlight': "bog'lanamiz",
-        'contact-desc': "Loyihangiz bormi? Men bilan bog'lanishingiz mumkin",
-        'contact-email': 'Email',
-        'contact-phone': 'Telefon',
-        'contact-location': 'Manzil',
-        'contact-location-value': "Toshkent, O'zbekiston",
-        'contact-name-placeholder': 'Ismingiz',
-        'contact-email-placeholder': 'Email',
-        'contact-subject-placeholder': 'Mavzu',
-        'contact-message-placeholder': 'Xabar',
-        'contact-send': 'Yuborish',
-        'footer-desc': "Zamonaviy veb-ilovalar va mobil dasturlar yarataman.",
-        'footer-menu': 'Menyu',
-        'footer-services': 'Xizmatlar',
-        'footer-contact': "Bog'lanish",
-        'footer-copyright': '© 2026 Oxunjon. Barcha huquqlar himoyalangan.',
-        'footer-made': '❤️ bilan yaratilgan'
+        navHome: "Bosh",
+        navAbout: "Men",
+        navSkills: "Ko'nikmalar",
+        navProjects: "Loyihalar",
+        navServices: "Xizmatlar",
+        navContact: "Aloqa",
+        badge: "Open to Work",
+        hello: "Salom, men",
+        role: "Full-Stack Dasturchi",
+        exp: "2+ yillik tajriba | 50+ loyiha",
+        projectsBtn: "Loyihalar",
+        contactBtn: "Bog‘lanish",
+        aboutTitle: "Men haqimda",
+        aboutBio: "Full-Stack dasturchi, zamonaviy veb-ilovalar va mobil dasturlar yarataman. Har bir loyihaga kreativ yondashaman va sifatli natijalarni taqdim etaman.",
+        location: "Manzil",
+        locationVal: "Samarqand, O'zbekiston",
+        education: "Ta'lim",
+        educationVal: "SamDU, Sun'iy Intellekt",
+        current: "Hozirgi",
+        currentVal: "Senior Dasturchi",
+        certificates: "Sertifikatlar",
+        certificatesVal: "AWS, React, Node.js",
+        projectsStat: "Loyihalar",
+        experienceStat: "Yillik tajriba",
+        clientsStat: "Mijozlar",
+        skillsTitle: "Ko'nikmalar",
+        projectsTitle: "Loyihalar",
+        project1Title: "Zamonaviy Web Sayt",
+        project1Desc: "Responsive va zamonaviy dizayn",
+        project2Title: "E-Commerce Platform",
+        project2Desc: "Online do'kon tizimi",
+        project3Title: "Telegram Bot",
+        project3Desc: "Avtomatlashtirilgan bot",
+        project4Title: "Mobil Ilova",
+        project4Desc: "Android va iOS ilovalar",
+        projectDemo: "Ko'rish →",
+        servicesTitle: "Xizmatlar",
+        service1Title: "Web Sayt",
+        service1Desc: "Zamonaviy web sayt yaratish",
+        service2Title: "E-Commerce",
+        service2Desc: "Online do'kon tizimi",
+        service3Title: "Mobil Ilova",
+        service3Desc: "Android va iOS ilovalar",
+        service4Title: "AI & Bot",
+        service4Desc: "Telegram bot va AI yordamchi",
+        orderBtn: "Buyurtma",
+        testimonialsTitle: "Mijozlar fikri",
+        testimonial1: '"Ajoyib dasturchi! Loyihamni o\'z vaqtida va sifatli yakunladi."',
+        testimonial2: '"Oxunjon bilan ishlash juda qulay. Kreativ g\'oyalari va texnik bilimlari ajoyib."',
+        testimonial3: '"Professional va mas\'uliyatli yondashuv. Har bir bosqichda aloqada bo\'lib bordi."',
+        contactTitle: "Aloqa",
+        contactDesc: "Loyihangiz bormi? Men bilan bog'lanishingiz mumkin.",
+        sendBtn: "Yuborish",
+        footerDesc: "Zamonaviy web saytlar va dasturlar yarataman.",
+        footerRights: "Barcha huquqlar himoyalangan.",
     },
     ru: {
-        'nav-home': 'Главная',
-        'nav-about': 'Обо мне',
-        'nav-skills': 'Навыки',
-        'nav-projects': 'Проекты',
-        'nav-services': 'Услуги',
-        'nav-contact': 'Контакты',
-        'hero-badge': 'Открыт к работе',
-        'hero-greeting': 'Привет, я',
-        'hero-highlight': 'Full-Stack разработчик',
-        'hero-experience': ' | 4+ лет опыта | 50+ проектов',
-        'hero-projects': 'Проекты',
-        'hero-contact': 'Связаться',
-        'scroll': 'Листайте',
-        'about-title': 'Обо мне',
-        'about-me': 'Я',
-        'about-bio': 'Full-Stack разработчик, создаю современные веб-приложения и мобильные приложения. Подхожу к каждому проекту творчески и предоставляю качественные результаты.',
-        'about-location': 'Местоположение',
-        'about-location-value': 'Ташкент, Узбекистан',
-        'about-education': 'Образование',
-        'about-education-value': 'ТУИТ, Компьютерная инженерия',
-        'about-current': 'Текущий',
-        'about-current-value': 'Старший разработчик @ TechCorp',
-        'about-certificates': 'Сертификаты',
-        'about-certificates-value': 'AWS, React, Node.js',
-        'stat-projects': 'Проекты',
-        'stat-experience': 'Лет опыта',
-        'stat-clients': 'Клиенты',
-        'skills-title': 'Навыки',
-        'projects-title': 'Проекты',
-        'projects-more': 'Больше проектов',
-        'services-title': 'Услуги',
-        'service-web-title': 'Создание сайтов',
-        'service-web-desc': 'Корпоративные, блоги, лендинги',
-        'service-web-f1': 'Адаптивность',
-        'service-web-f2': 'SEO',
-        'service-web-f3': 'Быстрая загрузка',
-        'service-ecom-title': 'E-Commerce',
-        'service-ecom-desc': 'Система интернет-магазина',
-        'service-ecom-f1': 'Платёжная система',
-        'service-ecom-f2': 'Админ-панель',
-        'service-ecom-f3': 'Доставка',
-        'service-mobile-title': 'Мобильное приложение',
-        'service-mobile-desc': 'Приложения для Android и iOS',
-        'service-mobile-f1': 'Кроссплатформенность',
-        'service-mobile-f2': 'Push-уведомления',
-        'service-mobile-f3': 'Бэкенд',
-        'service-ai-title': 'AI и Бот',
-        'service-ai-desc': 'Telegram бот и AI-помощник',
-        'service-ai-f1': 'Telegram бот',
-        'service-ai-f2': 'AI интеграция',
-        'service-ai-f3': 'Автоматизация',
-        'service-badge': '🔥 Популярный',
-        'service-order': 'Заказать',
-        'contact-title': 'Контакты',
-        'contact-greeting': 'Давайте',
-        'contact-greeting-highlight': 'свяжемся',
-        'contact-desc': 'Есть проект? Свяжитесь со мной',
-        'contact-email': 'Email',
-        'contact-phone': 'Телефон',
-        'contact-location': 'Местоположение',
-        'contact-location-value': 'Ташкент, Узбекистан',
-        'contact-name-placeholder': 'Ваше имя',
-        'contact-email-placeholder': 'Email',
-        'contact-subject-placeholder': 'Тема',
-        'contact-message-placeholder': 'Сообщение',
-        'contact-send': 'Отправить',
-        'footer-desc': 'Создаю современные веб-приложения и мобильные приложения.',
-        'footer-menu': 'Меню',
-        'footer-services': 'Услуги',
-        'footer-contact': 'Контакты',
-        'footer-copyright': '© 2026 Oxunjon. Все права защищены.',
-        'footer-made': 'Сделано с ❤️'
+        navHome: "Главная",
+        navAbout: "Обо мне",
+        navSkills: "Навыки",
+        navProjects: "Проекты",
+        navServices: "Услуги",
+        navContact: "Контакты",
+        badge: "Открыт к работе",
+        hello: "Привет, я",
+        role: "Full-Stack Разработчик",
+        exp: "2+ года опыта | 50+ проектов",
+        projectsBtn: "Проекты",
+        contactBtn: "Связаться",
+        aboutTitle: "Обо мне",
+        aboutBio: "Full-Stack разработчик, создаю современные веб-приложения и мобильные приложения. К каждому проекту подхожу творчески и гарантирую качественные результаты.",
+        location: "Адрес",
+        locationVal: "Самарканд, Узбекистан",
+        education: "Образование",
+        educationVal: "СамГУ, Искусственный Интеллект",
+        current: "Сейчас",
+        currentVal: "Старший Разработчик",
+        certificates: "Сертификаты",
+        certificatesVal: "AWS, React, Node.js",
+        projectsStat: "Проекты",
+        experienceStat: "Лет опыта",
+        clientsStat: "Клиенты",
+        skillsTitle: "Навыки",
+        projectsTitle: "Проекты",
+        project1Title: "Современный Веб-Сайт",
+        project1Desc: "Адаптивный и современный дизайн",
+        project2Title: "E-Commerce Платформа",
+        project2Desc: "Система интернет-магазина",
+        project3Title: "Telegram Бот",
+        project3Desc: "Автоматизированный бот",
+        project4Title: "Мобильное Приложение",
+        project4Desc: "Android и iOS приложения",
+        projectDemo: "Смотреть →",
+        servicesTitle: "Услуги",
+        service1Title: "Веб-Сайт",
+        service1Desc: "Создание современного веб-сайта",
+        service2Title: "E-Commerce",
+        service2Desc: "Система интернет-магазина",
+        service3Title: "Мобильное Приложение",
+        service3Desc: "Android и iOS приложения",
+        service4Title: "AI & Бот",
+        service4Desc: "Telegram бот и AI помощник",
+        orderBtn: "Заказать",
+        testimonialsTitle: "Отзывы клиентов",
+        testimonial1: '"Отличный разработчик! Выполнил проект вовремя и качественно."',
+        testimonial2: '"С Охунжоном работать очень удобно. Его креативные идеи и технические знания отличные."',
+        testimonial3: '"Профессиональный и ответственный подход. На каждом этапе был на связи."',
+        contactTitle: "Контакты",
+        contactDesc: "Есть проект? Свяжитесь со мной.",
+        sendBtn: "Отправить",
+        footerDesc: "Создаю современные веб-сайты и приложения.",
+        footerRights: "Все права защищены.",
     },
     en: {
-        'nav-home': 'Home',
-        'nav-about': 'About',
-        'nav-skills': 'Skills',
-        'nav-projects': 'Projects',
-        'nav-services': 'Services',
-        'nav-contact': 'Contact',
-        'hero-badge': 'Open to Work',
-        'hero-greeting': 'Hi, I am',
-        'hero-highlight': 'Full-Stack Developer',
-        'hero-experience': ' | 4+ years experience | 50+ projects',
-        'hero-projects': 'Projects',
-        'hero-contact': 'Contact Me',
-        'scroll': 'Scroll',
-        'about-title': 'About Me',
-        'about-me': 'I am',
-        'about-bio': 'Full-Stack developer, creating modern web applications and mobile apps. I approach every project creatively and deliver quality results.',
-        'about-location': 'Location',
-        'about-location-value': 'Tashkent, Uzbekistan',
-        'about-education': 'Education',
-        'about-education-value': 'TATU, Computer Engineering',
-        'about-current': 'Current',
-        'about-current-value': 'Senior Developer @ TechCorp',
-        'about-certificates': 'Certificates',
-        'about-certificates-value': 'AWS, React, Node.js',
-        'stat-projects': 'Projects',
-        'stat-experience': 'Years Experience',
-        'stat-clients': 'Clients',
-        'skills-title': 'Skills',
-        'projects-title': 'Projects',
-        'projects-more': 'More Projects',
-        'services-title': 'Services',
-        'service-web-title': 'Website Development',
-        'service-web-desc': 'Corporate, blog, landing page',
-        'service-web-f1': 'Responsive',
-        'service-web-f2': 'SEO',
-        'service-web-f3': 'Fast Loading',
-        'service-ecom-title': 'E-Commerce',
-        'service-ecom-desc': 'Online store system',
-        'service-ecom-f1': 'Payment System',
-        'service-ecom-f2': 'Admin Panel',
-        'service-ecom-f3': 'Delivery',
-        'service-mobile-title': 'Mobile App',
-        'service-mobile-desc': 'Android and iOS apps',
-        'service-mobile-f1': 'Cross-platform',
-        'service-mobile-f2': 'Push Notifications',
-        'service-mobile-f3': 'Backend',
-        'service-ai-title': 'AI & Bot',
-        'service-ai-desc': 'Telegram bot and AI assistant',
-        'service-ai-f1': 'Telegram bot',
-        'service-ai-f2': 'AI Integration',
-        'service-ai-f3': 'Automation',
-        'service-badge': '🔥 Popular',
-        'service-order': 'Order',
-        'contact-title': 'Contact',
-        'contact-greeting': "Let's",
-        'contact-greeting-highlight': 'Connect',
-        'contact-desc': 'Have a project? Contact me',
-        'contact-email': 'Email',
-        'contact-phone': 'Phone',
-        'contact-location': 'Location',
-        'contact-location-value': 'Tashkent, Uzbekistan',
-        'contact-name-placeholder': 'Your Name',
-        'contact-email-placeholder': 'Email',
-        'contact-subject-placeholder': 'Subject',
-        'contact-message-placeholder': 'Message',
-        'contact-send': 'Send',
-        'footer-desc': 'Creating modern web applications and mobile apps.',
-        'footer-menu': 'Menu',
-        'footer-services': 'Services',
-        'footer-contact': 'Contact',
-        'footer-copyright': '© 2026 Oxunjon. All rights reserved.',
-        'footer-made': 'Made with ❤️'
-    }
+        navHome: "Home",
+        navAbout: "About",
+        navSkills: "Skills",
+        navProjects: "Projects",
+        navServices: "Services",
+        navContact: "Contact",
+        badge: "Open to Work",
+        hello: "Hello, I'm",
+        role: "Full-Stack Developer",
+        exp: "2+ years experience | 50+ projects",
+        projectsBtn: "Projects",
+        contactBtn: "Contact",
+        aboutTitle: "About Me",
+        aboutBio: "Full-Stack developer, creating modern web applications and mobile apps. I approach every project creatively and deliver quality results.",
+        location: "Location",
+        locationVal: "Samarkand, Uzbekistan",
+        education: "Education",
+        educationVal: "SamSU, Artificial Intelligence",
+        current: "Currently",
+        currentVal: "Senior Developer",
+        certificates: "Certificates",
+        certificatesVal: "AWS, React, Node.js",
+        projectsStat: "Projects",
+        experienceStat: "Years Experience",
+        clientsStat: "Clients",
+        skillsTitle: "Skills",
+        projectsTitle: "Projects",
+        project1Title: "Modern Web Site",
+        project1Desc: "Responsive and modern design",
+        project2Title: "E-Commerce Platform",
+        project2Desc: "Online store system",
+        project3Title: "Telegram Bot",
+        project3Desc: "Automated bot",
+        project4Title: "Mobile App",
+        project4Desc: "Android & iOS apps",
+        projectDemo: "View →",
+        servicesTitle: "Services",
+        service1Title: "Web Site",
+        service1Desc: "Creating modern websites",
+        service2Title: "E-Commerce",
+        service2Desc: "Online store system",
+        service3Title: "Mobile App",
+        service3Desc: "Android & iOS apps",
+        service4Title: "AI & Bot",
+        service4Desc: "Telegram bot & AI assistant",
+        orderBtn: "Order",
+        testimonialsTitle: "Testimonials",
+        testimonial1: '"Great developer! Completed the project on time and with quality."',
+        testimonial2: '"Working with Oxunjon is very convenient. His creative ideas and technical skills are excellent."',
+        testimonial3: '"Professional and responsible approach. He kept us informed at every stage."',
+        contactTitle: "Contact",
+        contactDesc: "Have a project? Get in touch with me.",
+        sendBtn: "Send",
+        footerDesc: "Creating modern websites and applications.",
+        footerRights: "All rights reserved.",
+    },
 };
 
-let currentLang = 'uz';
+function setLanguage(lang) {
+    const data = langData[lang];
+    if (!data) return;
 
-if (langBtn && langDropdown) {
-    // Dropdownni ochish/yopish
-    langBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        langDropdown.classList.toggle('active');
+    document.querySelectorAll("[data-key]").forEach((el) => {
+        const key = el.getAttribute("data-key");
+        if (data[key] !== undefined) {
+            el.textContent = data[key];
+        }
     });
 
-    document.addEventListener('click', () => {
-        langDropdown.classList.remove('active');
-    });
+    localStorage.setItem("lang", lang);
+}
 
-    // Tilni o'zgartirish
-    langDropdown.querySelectorAll('button').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const lang = btn.dataset.lang;
-            currentLang = lang;
-            currentLangSpan.textContent = lang.toUpperCase();
-            langDropdown.querySelectorAll('button').forEach(b => b.classList.remove('active-lang'));
-            btn.classList.add('active-lang');
-            langDropdown.classList.remove('active');
-            applyTranslations(lang);
-            localStorage.setItem('lang', lang);
-        });
-    });
+const savedLang = localStorage.getItem("lang") || "uz";
+setLanguage(savedLang);
 
-    // Saqlangan tilni yuklash
-    const savedLang = localStorage.getItem('lang');
-    if (savedLang && translations[savedLang]) {
-        currentLang = savedLang;
-        currentLangSpan.textContent = savedLang.toUpperCase();
-        langDropdown.querySelectorAll('button').forEach(b => {
-            b.classList.toggle('active-lang', b.dataset.lang === savedLang);
-        });
-        applyTranslations(savedLang);
+// Set active lang option
+document.querySelectorAll(".lang-option").forEach((opt) => {
+    if (opt.getAttribute("data-lang") === savedLang) {
+        opt.classList.add("active");
     }
-}
+});
 
-function applyTranslations(lang) {
-    const t = translations[lang];
-    if (!t) return;
+// =========================================
+// CONTACT FORM
+// =========================================
+const contactForm = document.getElementById("contactForm");
 
-    document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.dataset.key;
-        if (t[key] !== undefined) {
-            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                el.placeholder = t[key];
-            } else {
-                el.textContent = t[key];
-            }
-        }
-    });
+contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-    // Nav-menu dagi span larni alohida yangilash
-    document.querySelectorAll('.nav-menu a[data-key]').forEach(el => {
-        const key = el.dataset.key;
-        const span = el.querySelector('span');
-        if (span && t[key] !== undefined) {
-            span.textContent = t[key];
-        }
-    });
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value;
 
-    // Footer dagi menyu linklarini yangilash
-    document.querySelectorAll('.footer-links a[data-key]').forEach(el => {
-        const key = el.dataset.key;
-        if (t[key] !== undefined && !el.querySelector('i')) {
-            el.textContent = t[key];
-        }
-    });
-
-    document.documentElement.setAttribute('lang', lang);
-}
-
-// ===== TYPING =====
-const typingText = document.querySelector('.typing-text');
-if (typingText) {
-    const words = ['Full-Stack Dasturchi', 'Frontend Developer', 'Backend Developer', 'Freelancer', 'Tech Innovator'];
-    let wordIndex = 0, charIndex = 0, isDeleting = false;
-
-    function typeEffect() {
-        const current = words[wordIndex];
-        if (isDeleting) {
-            typingText.textContent = current.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            typingText.textContent = current.substring(0, charIndex + 1);
-            charIndex++;
-        }
-        if (!isDeleting && charIndex === current.length) {
-            isDeleting = true;
-            setTimeout(typeEffect, 2000);
-            return;
-        }
-        if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length;
-            setTimeout(typeEffect, 500);
-            return;
-        }
-        setTimeout(typeEffect, isDeleting ? 50 : 100);
+    if (name && email && message) {
+        alert(
+            `✅ Xabaringiz qabul qilindi!\n\nIsm: ${name}\nEmail: ${email}\nMavzu: ${subject || "Yo'q"}\nXabar: ${message}`
+        );
+        contactForm.reset();
+    } else {
+        alert("⚠️ Iltimos, barcha maydonlarni to'ldiring!");
     }
-    typeEffect();
-}
+});
 
-// ===== COUNTER =====
-const stats = document.querySelectorAll('.stat-number');
-
-function animateCounter(el) {
-    const target = parseInt(el.getAttribute('data-count'));
-    let current = 0;
-    const steps = 50;
-    const increment = target / steps;
-    let step = 0;
-    const timer = setInterval(() => {
-        step++;
-        current += increment;
-        if (step >= steps) {
-            el.textContent = target + '+';
-            clearInterval(timer);
-        } else {
-            el.textContent = Math.floor(current);
-        }
-    }, 40);
-}
-
-const aboutSection = document.querySelector('.about');
-let counterAnimated = false;
-
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !counterAnimated) {
-            counterAnimated = true;
-            stats.forEach(stat => animateCounter(stat));
-        }
-    });
-}, { threshold: 0.3 });
-
-if (aboutSection) counterObserver.observe(aboutSection);
-
-// ===== PROJECTS =====
-const projects = [
-    { title: 'E-Commerce Platform', desc: 'Magento asosida online-do\'kon', tags: ['React', 'Node.js', 'MongoDB'], icon: 'fa-shopping-cart' },
-    { title: 'AI Assistant Bot', desc: 'Telegram bot + Python AI', tags: ['Python', 'AI', 'Telegram'], icon: 'fa-robot' },
-    { title: 'Task Manager Pro', desc: 'Vue.js + Firebase', tags: ['Vue.js', 'Firebase', 'Tailwind'], icon: 'fa-tasks' },
-    { title: 'Analytics Dashboard', desc: 'Real-time vizualizatsiya', tags: ['D3.js', 'Express', 'PostgreSQL'], icon: 'fa-chart-line' },
-    { title: 'Portfolio Builder', desc: 'Dasturchilar uchun portfolio', tags: ['React', 'Tailwind', 'Framer'], icon: 'fa-briefcase' },
-    { title: 'CRM System', desc: 'Mijozlar boshqaruvi tizimi', tags: ['Vue.js', 'Laravel', 'MySQL'], icon: 'fa-users' },
-    { title: 'Food Delivery App', desc: 'Oziq-ovqat yetkazish ilovasi', tags: ['React Native', 'Node.js', 'MongoDB'], icon: 'fa-utensils' },
-    { title: 'Chat Application', desc: 'Real-time chat ilovasi', tags: ['Socket.io', 'React', 'Express'], icon: 'fa-comments' },
-];
-
-let visibleProjects = 4;
-const projectsGrid = document.getElementById('projectsGrid');
-const showMoreBtn = document.getElementById('showMoreBtn');
-
-function renderProjects(count) {
-    if (!projectsGrid) return;
-    projectsGrid.innerHTML = '';
-    projects.slice(0, count).forEach((p, i) => {
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        card.style.animationDelay = (i * 0.1) + 's';
-        card.innerHTML = `
-            <div class="project-thumb">
-                <div class="project-icon"><i class="fas ${p.icon}"></i></div>
-                <div class="project-overlay">
-                    <a href="#" onclick="alert('Loyihaga o\'tish: ${p.title}')"><i class="fas fa-link"></i></a>
-                    <a href="#" onclick="alert('GitHub: ${p.title}')"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-            <div class="project-body">
-                <h3>${p.title}</h3>
-                <p>${p.desc}</p>
-                <div class="project-tags">
-                    ${p.tags.map(t => `<span>${t}</span>`).join('')}
-                </div>
-            </div>
-        `;
-        projectsGrid.appendChild(card);
-    });
-}
-
-if (projectsGrid) renderProjects(visibleProjects);
-
-if (showMoreBtn) {
-    showMoreBtn.addEventListener('click', () => {
-        visibleProjects += 4;
-        if (visibleProjects >= projects.length) {
-            visibleProjects = projects.length;
-            showMoreBtn.style.display = 'none';
-        }
-        renderProjects(visibleProjects);
-    });
-}
-
-// ===== CONTACT FORM =====
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+// =========================================
+// SMOOTH SCROLL
+// =========================================
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
         e.preventDefault();
-        const btn = e.target.querySelector('.btn');
-        const original = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Yuborilmoqda...';
-        btn.disabled = true;
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    });
+});
+
+// =========================================
+// PARALLAX EFFECT
+// =========================================
+document.addEventListener("mousemove", (e) => {
+    const orbs = document.querySelectorAll(".orb");
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+    orbs.forEach((orb, i) => {
+        const speed = 0.3 + i * 0.2;
+        orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+    });
+});
+
+// =========================================
+// GLITCH EFFECT
+// =========================================
+document.querySelectorAll(".glitch").forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+        el.style.animation = "glitch 0.3s ease-in-out";
         setTimeout(() => {
-            btn.innerHTML = '<i class="fas fa-check"></i> Xabar yuborildi! ✅';
-            btn.style.background = 'var(--secondary)';
-            e.target.reset();
-            setTimeout(() => {
-                btn.innerHTML = original;
-                btn.disabled = false;
-                btn.style.background = '';
-            }, 3000);
-        }, 2000);
-    });
-}
-
-// ===== SCROLL TOP =====
-const scrollTop = document.getElementById('scrollTop');
-if (scrollTop) {
-    window.addEventListener('scroll', () => {
-        scrollTop.classList.toggle('visible', window.scrollY > 500);
-    });
-    scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-}
-
-// ===== SMOOTH SCROLL =====
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
+            el.style.animation = "";
+        }, 300);
     });
 });
 
-// ===== NAVBAR ACTIVE =====
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-menu a');
-
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 100) current = s.id;
-    });
-    navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
-    });
+// =========================================
+// SCROLL INDICATOR
+// =========================================
+const scrollIndicator = document.querySelector(".scroll-indicator");
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+        scrollIndicator.style.opacity = "0";
+        scrollIndicator.style.transition = "opacity 0.5s";
+    } else {
+        scrollIndicator.style.opacity = "0.6";
+    }
 });
-
-// ===== CONSOLE =====
-console.log('%c🚀 Oxunjon | Professional Portfolio', 'font-size: 28px; font-weight: bold; color: #6c5ce7;');
-console.log('%c✨ 4+ yillik tajriba | 50+ loyiha', 'font-size: 16px; color: #00b894;');
-console.log('%c💻 Full-Stack Developer', 'font-size: 14px; color: #fd79a8;');
-console.log('%c🌍 3 til qo\'llab-quvvatlanadi: O\'zbek, Rus, Ingliz', 'font-size: 14px; color: #a29bfe;');

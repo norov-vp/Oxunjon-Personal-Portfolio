@@ -1,588 +1,586 @@
 <!DOCTYPE html>
-<html lang="uz" data-theme="dark">
+<html lang="uz">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Oxunjon | Pro Dasturchi</title>
+    <title>Oxunjon | Full-Stack Developer</title>
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/style.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
 
-<!-- ===== PRELOADER ===== -->
-<div class="preloader" id="preloader">
-    <div class="preloader-container">
-        <div class="preloader-logo-ring">
-            <svg viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="var(--border)" stroke-width="2"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#grad)" stroke-width="3"
-                    stroke-dasharray="280" stroke-dashoffset="280"
-                    style="animation: preloaderCircle 2s ease-in-out infinite"/>
-                <defs>
-                    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#6c5ce7"/>
-                        <stop offset="100%" style="stop-color:#a29bfe"/>
-                    </linearGradient>
-                </defs>
-            </svg>
-            <span class="logo-text">O</span>
-        </div>
-        <div class="preloader-progress-wrap">
-            <div class="preloader-progress-bar" id="progressBar"></div>
-        </div>
-        <div class="preloader-status">
-            Yuklanmoqda<span>.</span><span>.</span><span>.</span>
-        </div>
-    </div>
-</div>
-
-<!-- ===== CUSTOM CURSOR ===== -->
-<div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
-
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar" id="navbar">
-    <div class="container">
-        <div class="nav-wrapper">
-            <a href="#" class="logo">
-                <i class="fas fa-crown"></i>
+    <!-- ============ PRELOADER ============ -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <i class="fas fa-code"></i>
                 <span>Oxunjon</span>
-            </a>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="active" data-key="nav-home"><i class="fas fa-home"></i> <span>Bosh</span></a></li>
-                <li><a href="#about" data-key="nav-about"><i class="fas fa-user-astronaut"></i> <span>Men</span></a></li>
-                <li><a href="#skills" data-key="nav-skills"><i class="fas fa-brain"></i> <span>Ko'nikmalar</span></a></li>
-                <li><a href="#projects" data-key="nav-projects"><i class="fas fa-rocket"></i> <span>Loyihalar</span></a></li>
-                <li><a href="#services" data-key="nav-services"><i class="fas fa-cogs"></i> <span>Xizmatlar</span></a></li>
-                <li><a href="#contact" data-key="nav-contact"><i class="fas fa-paper-plane"></i> <span>Aloqa</span></a></li>
-            </ul>
-            <div class="nav-actions">
-                <div class="lang-selector">
-                    <button class="lang-btn" id="langBtn">
-                        <i class="fas fa-globe"></i>
-                        <span id="currentLang">UZ</span>
-                        <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="preloader-terminal">
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="terminal-title">developer@portfolio:~$</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="term-line"><span class="prompt">$</span> <span class="cmd">🚀 Starting system...</span></div>
+                    <div class="term-line"><span class="prompt">$</span> <span class="cmd">📦 Loading modules...</span></div>
+                    <div class="term-line"><span class="prompt">$</span> <span class="cmd">🔗 Connecting to server...</span></div>
+                    <div class="term-line"><span class="prompt">$</span> <span class="cmd">⚡ Initializing portfolio...</span></div>
+                    <div class="term-line success"><span class="prompt">$</span> <span class="cmd">✅ Welcome, Oxunjon!</span></div>
+                    <span class="term-cursor"></span>
+                </div>
+            </div>
+            <div class="preloader-bar">
+                <div class="preloader-fill" id="preloaderFill"></div>
+            </div>
+            <div class="preloader-percent" id="preloaderPercent">0%</div>
+        </div>
+    </div>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#home" class="logo">
+                    <div class="logo-icon"><i class="fas fa-code"></i></div>
+                    <span>Oxunjon</span>
+                    <span class="logo-dot"></span>
+                </a>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="active"><i class="fas fa-home"></i><span data-key="navHome">Bosh</span></a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i><span data-key="navAbout">Men</span></a></li>
+                    <li><a href="#skills"><i class="fas fa-brain"></i><span data-key="navSkills">Ko'nikmalar</span></a></li>
+                    <li><a href="#projects"><i class="fas fa-rocket"></i><span data-key="navProjects">Loyihalar</span></a></li>
+                    <li><a href="#services"><i class="fas fa-cogs"></i><span data-key="navServices">Xizmatlar</span></a></li>
+                    <li><a href="#contact"><i class="fas fa-paper-plane"></i><span data-key="navContact">Aloqa</span></a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <div class="lang-wrap">
+                        <button class="lang-toggle" id="langToggle">
+                            <i class="fas fa-globe"></i>
+                            <span id="currentLang">UZ</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <button class="lang-option active" data-lang="uz"><i class="fas fa-check"></i> O'zbekcha</button>
+                            <button class="lang-option" data-lang="ru"><i class="fas fa-check"></i> Русский</button>
+                            <button class="lang-option" data-lang="en"><i class="fas fa-check"></i> English</button>
+                        </div>
+                    </div>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
                     </button>
-                    <div class="lang-dropdown" id="langDropdown">
-                        <button data-lang="uz" class="active-lang">🇺🇿 O'zbekcha</button>
-                        <button data-lang="ru">🇷🇺 Русский</button>
-                        <button data-lang="en">🇬🇧 English</button>
-                    </div>
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span><span></span><span></span>
+                    </button>
                 </div>
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="menu-toggle" id="menuToggle">
-                    <span></span><span></span><span></span>
-                </button>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<!-- ===== HERO ===== -->
-<section id="home" class="hero">
-    <div class="hero-bg">
-        <div class="gradient-orb orb1"></div>
-        <div class="gradient-orb orb2"></div>
-        <div class="gradient-orb orb3"></div>
-    </div>
-    <div class="container">
-        <div class="hero-grid">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="pulse-dot"></span>
-                    <span data-key="hero-badge">Open to Work</span>
-                </div>
-                <h1 class="hero-title">
-                    <span data-key="hero-greeting">Salom, men</span> <br />
-                    <span class="gradient-text">Oxunjon</span>
-                </h1>
-                <div class="hero-typing">
-                    <i class="fas fa-terminal"></i>
-                    <span class="typing-text"></span>
-                </div>
-                <p class="hero-desc">
-                    <span class="highlight-text" data-key="hero-highlight">Full-Stack Dasturchi</span>
-                    <span data-key="hero-experience"> | 4+ yillik tajriba | 50+ loyiha</span>
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        <i class="fas fa-rocket"></i> <span data-key="hero-projects">Loyihalar</span>
-                    </a>
-                    <a href="#contact" class="btn btn-outline">
-                        <i class="fas fa-paper-plane"></i> <span data-key="hero-contact">Bog'lanish</span>
-                    </a>
-                </div>
-                <div class="hero-social">
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-avatar-wrapper">
-                    <div class="avatar-container">
-                        <div class="avatar-ring">
-                            <div class="ring-text">PHP</div>
-                            <div class="ring-text">V</div>
-                            <div class="ring-text">PHP</div>
-                            <div class="ring-text">V</div>
-                        </div>
-                        <div class="avatar-inner">
-                            <div class="avatar-image">
-                                <i class="fas fa-user-circle"></i>
-                            </div>
-                            <div class="avatar-v-logo">
-                                <span class="v-text">V</span>
-                                <span class="php-text">PHP</span>
-                            </div>
-                        </div>
-                        <div class="floating-tech">
-                            <span class="tech-item" style="--i:1"><i class="fab fa-react"></i></span>
-                            <span class="tech-item" style="--i:2"><i class="fab fa-node-js"></i></span>
-                            <span class="tech-item" style="--i:3"><i class="fas fa-database"></i></span>
-                            <span class="tech-item" style="--i:4"><i class="fab fa-python"></i></span>
-                            <span class="tech-item" style="--i:5"><i class="fab fa-vuejs"></i></span>
-                            <span class="tech-item" style="--i:6"><i class="fab fa-php"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- ============ HERO ============ -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="orb orb1"></div>
+            <div class="orb orb2"></div>
+            <div class="orb orb3"></div>
+            <div class="orb orb4"></div>
+            <div class="grid-lines"></div>
         </div>
-    </div>
-    <div class="scroll-indicator">
-        <span data-key="scroll">Scroll</span>
-        <i class="fas fa-chevron-down"></i>
-    </div>
-</section>
 
-<!-- ===== ABOUT ===== -->
-<section id="about" class="about">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-number">01</span>
-            <h2 data-key="about-title">Men haqimda</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="about-wrapper">
-            <div class="about-image">
-                <div class="about-img-container">
-                    <div class="about-img-ring"></div>
-                    <div class="about-img-inner">
-                        <i class="fas fa-user-astronaut"></i>
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content" data-aos="fade-right" data-aos-duration="1200">
+                    <div class="hero-badge">
+                        <span class="pulse-dot"></span>
+                        <span data-key="badge">Open to Work</span>
+                        <span class="badge-code">// available</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        <span class="greeting" data-key="hello">Salom, men</span>
+                        <span class="gradient-text glitch" data-text="Oxunjon">Oxunjon</span>
+                        <span class="cursor">|</span>
+                    </h1>
+
+                    <div class="hero-typing">
+                        <i class="fas fa-terminal"></i>
+                        <span id="typingText"></span>
+                        <span class="typing-cursor">_</span>
+                    </div>
+
+                    <p class="hero-desc">
+                        <span class="highlight" data-key="role">Full-Stack Dasturchi</span>
+                        <span class="sep">•</span>
+                        <span data-key="exp">2+ yillik tajriba</span>
+                        <span class="sep">•</span>
+                        <span>50+ loyiha</span>
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            <span data-key="projectsBtn">Loyihalar</span>
+                            <span class="shimmer"></span>
+                        </a>
+                        <a href="https://t.me/norov_vp" target="_blank" class="btn btn-outline">
+                            <i class="fab fa-telegram-plane"></i>
+                            <span data-key="contactBtn">Bog‘lanish</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-social">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://t.me/norov_vp" target="_blank" class="social-link"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- ============ RASM ============ -->
+                <div class="hero-visual" data-aos="fade-left" data-aos-duration="1200">
+                    <div class="profile-wrapper">
+                        <div class="profile-image-container">
+                            <div class="profile-ring"></div>
+                            <div class="profile-inner">
+                                <img src="./image/photo_2026-08-17_11-59-50.jpg" alt="Oxunjon" />
+                                <div class="profile-glow"></div>
+                                <div class="profile-overlay">
+                                    <div class="profile-social">
+                                        <a href="#"><i class="fab fa-github"></i></a>
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="https://t.me/norov_vp"><i class="fab fa-telegram-plane"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-badge">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Available</span>
+                            </div>
+                        </div>
+                        <!-- Floating icons -->
+                        <div class="float-icon f1"><i class="fab fa-php"></i></div>
+                        <div class="float-icon f2"><i class="fab fa-js"></i></div>
+                        <div class="float-icon f3"><i class="fab fa-react"></i></div>
+                        <div class="float-icon f4"><i class="fas fa-database"></i></div>
+                        <div class="float-icon f5"><i class="fab fa-node-js"></i></div>
+                        <div class="float-icon f6"><i class="fab fa-python"></i></div>
                     </div>
                 </div>
             </div>
-            <div class="about-content">
-                <h3><span data-key="about-me">Men</span> <span class="gradient-text">Oxunjon</span></h3>
-                <p class="about-bio">
-                    <i class="fas fa-quote-left"></i>
-                    <span data-key="about-bio">Full-Stack dasturchi, zamonaviy veb-ilovalar va mobil dasturlar yarataman. Har bir loyihaga kreativ yondashaman va sifatli natijalarni taqdim etaman.</span>
-                    <i class="fas fa-quote-right"></i>
-                </p>
-                <div class="about-info-grid">
-                    <div class="about-info-item">
+        </div>
+
+        <div class="scroll-indicator">
+            <span></span><span></span><span></span>
+            <span class="scroll-text">scroll</span>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-key="aboutTitle">Men haqimda</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="about-wrapper">
+                <div class="about-image" data-aos="fade-right" data-aos-duration="800">
+                    <div class="img-container">
+                        <div class="img-ring"></div>
+                        <div class="img-inner">
+                            <img src="./image/photo_2026-08-17_11-59-50.jpg" alt="Oxunjon" />
+                            <div class="img-glow"></div>
+                            <div class="img-overlay">
+                                <div class="img-social">
+                                    <a href="#"><i class="fab fa-github"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://t.me/norov_vp"><i class="fab fa-telegram-plane"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-content" data-aos="fade-left" data-aos-duration="800">
+                    <h3>Men <span class="gradient-text">Oxunjon</span></h3>
+
+                    <p class="about-bio">
+                        <i class="fas fa-quote-left"></i>
+                        <span data-key="aboutBio">Full-Stack dasturchi, zamonaviy veb-ilovalar va mobil dasturlar yarataman. Har bir loyihaga kreativ yondashaman va sifatli natijalarni taqdim etaman.</span>
+                        <i class="fas fa-quote-right"></i>
+                    </p>
+
+                    <div class="about-grid">
+                        <div class="about-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span data-key="location">Manzil</span>
+                                <p data-key="locationVal">Samarqand, O'zbekiston</p>
+                            </div>
+                        </div>
+                        <div class="about-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <span data-key="education">Ta'lim</span>
+                                <p data-key="educationVal">SamDU, Sun'iy Intellekt</p>
+                            </div>
+                        </div>
+                        <div class="about-item">
+                            <i class="fas fa-briefcase"></i>
+                            <div>
+                                <span data-key="current">Hozirgi</span>
+                                <p data-key="currentVal">Senior Dasturchi</p>
+                            </div>
+                        </div>
+                        <div class="about-item">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <span data-key="certificates">Sertifikatlar</span>
+                                <p data-key="certificatesVal">AWS, React, Node.js</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-stats">
+                        <div class="stat" data-count="50">
+                            <span class="stat-num">0</span>
+                            <span class="stat-label" data-key="projectsStat">Loyihalar</span>
+                        </div>
+                        <div class="stat" data-count="2">
+                            <span class="stat-num">0</span>
+                            <span class="stat-label" data-key="experienceStat">Yillik tajriba</span>
+                        </div>
+                        <div class="stat" data-count="30">
+                            <span class="stat-num">0</span>
+                            <span class="stat-label" data-key="clientsStat">Mijozlar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-key="skillsTitle">Ko'nikmalar</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill" data-aos="zoom-in" data-aos-delay="0">
+                    <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                    <h3>HTML5</h3>
+                    <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+                    <span>95%</span>
+                </div>
+                <div class="skill" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                    <h3>CSS3</h3>
+                    <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+                    <span>90%</span>
+                </div>
+                <div class="skill" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="skill-icon"><i class="fab fa-js"></i></div>
+                    <h3>JavaScript</h3>
+                    <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+                    <span>92%</span>
+                </div>
+                <div class="skill" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="skill-icon"><i class="fab fa-react"></i></div>
+                    <h3>React.js</h3>
+                    <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+                    <span>88%</span>
+                </div>
+                <div class="skill" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="skill-icon"><i class="fab fa-node-js"></i></div>
+                    <h3>Node.js</h3>
+                    <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+                    <span>85%</span>
+                </div>
+                <div class="skill" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="skill-icon"><i class="fab fa-python"></i></div>
+                    <h3>Python</h3>
+                    <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+                    <span>80%</span>
+                </div>
+                <div class="skill" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="skill-icon"><i class="fab fa-php"></i></div>
+                    <h3>PHP</h3>
+                    <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+                    <span>70%</span>
+                </div>
+                <div class="skill" data-aos="zoom-in" data-aos-delay="350">
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
+                    <h3>MySQL</h3>
+                    <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+                    <span>78%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-key="projectsTitle">Loyihalar</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project" data-aos="flip-up" data-aos-delay="0">
+                    <div class="project-thumb">
+                        <img src="https://via.placeholder.com/400x250/0a0a1a/ff0040?text=Web" alt="Web" />
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                            <span class="project-tag">Web</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 data-key="project1Title">Zamonaviy Web Sayt</h3>
+                        <p data-key="project1Desc">Responsive va zamonaviy dizayn</p>
+                        <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                        <a href="#" class="project-demo" data-key="projectDemo">Ko'rish →</a>
+                    </div>
+                </div>
+
+                <div class="project" data-aos="flip-up" data-aos-delay="100">
+                    <div class="project-thumb">
+                        <img src="https://via.placeholder.com/400x250/0a0a1a/ff3366?text=E-Commerce" alt="E-Commerce" />
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                            <span class="project-tag">E-Commerce</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 data-key="project2Title">E-Commerce Platform</h3>
+                        <p data-key="project2Desc">Online do'kon tizimi</p>
+                        <div class="project-tech"><span>React</span><span>Node.js</span><span>MongoDB</span></div>
+                        <a href="#" class="project-demo" data-key="projectDemo">Ko'rish →</a>
+                    </div>
+                </div>
+
+                <div class="project" data-aos="flip-up" data-aos-delay="200">
+                    <div class="project-thumb">
+                        <img src="https://via.placeholder.com/400x250/0a0a1a/cc0033?text=Bot" alt="Bot" />
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                            <span class="project-tag">Bot</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 data-key="project3Title">Telegram Bot</h3>
+                        <p data-key="project3Desc">Avtomatlashtirilgan bot</p>
+                        <div class="project-tech"><span>Python</span><span>Aiogram</span><span>PostgreSQL</span></div>
+                        <a href="#" class="project-demo" data-key="projectDemo">Ko'rish →</a>
+                    </div>
+                </div>
+
+                <div class="project" data-aos="flip-up" data-aos-delay="300">
+                    <div class="project-thumb">
+                        <img src="https://via.placeholder.com/400x250/0a0a1a/ff0040?text=Mobile" alt="Mobile" />
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                            <span class="project-tag">Mobile</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 data-key="project4Title">Mobil Ilova</h3>
+                        <p data-key="project4Desc">Android va iOS ilovalar</p>
+                        <div class="project-tech"><span>React Native</span><span>Firebase</span></div>
+                        <a href="#" class="project-demo" data-key="projectDemo">Ko'rish →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-key="servicesTitle">Xizmatlar</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="services-grid">
+                <div class="service" data-aos="flip-left" data-aos-delay="0">
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+                    <h3 data-key="service1Title">Web Sayt</h3>
+                    <p data-key="service1Desc">Zamonaviy web sayt yaratish</p>
+                    <div class="service-price">$500+</div>
+                    <a href="https://t.me/norov_vp" target="_blank" class="btn btn-primary" data-key="orderBtn">Buyurtma</a>
+                </div>
+
+                <div class="service featured" data-aos="flip-left" data-aos-delay="100">
+                    <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <h3 data-key="service2Title">E-Commerce</h3>
+                    <p data-key="service2Desc">Online do'kon tizimi</p>
+                    <div class="service-price">$1500+</div>
+                    <a href="https://t.me/norov_vp" target="_blank" class="btn btn-primary" data-key="orderBtn">Buyurtma</a>
+                </div>
+
+                <div class="service" data-aos="flip-left" data-aos-delay="200">
+                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 data-key="service3Title">Mobil Ilova</h3>
+                    <p data-key="service3Desc">Android va iOS ilovalar</p>
+                    <div class="service-price">$2000+</div>
+                    <a href="https://t.me/norov_vp" target="_blank" class="btn btn-primary" data-key="orderBtn">Buyurtma</a>
+                </div>
+
+                <div class="service" data-aos="flip-left" data-aos-delay="300">
+                    <div class="service-icon"><i class="fas fa-robot"></i></div>
+                    <h3 data-key="service4Title">AI & Bot</h3>
+                    <p data-key="service4Desc">Telegram bot va AI yordamchi</p>
+                    <div class="service-price">$800+</div>
+                    <a href="https://t.me/norov_vp" target="_blank" class="btn btn-primary" data-key="orderBtn">Buyurtma</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-key="testimonialsTitle">Mijozlar fikri</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial" data-aos="fade-up" data-aos-delay="0">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p data-key="testimonial1">"Ajoyib dasturchi! Loyihamni o'z vaqtida va sifatli yakunladi."</p>
+                    <div class="testimonial-author">
+                        <div class="avatar"><img src="https://i.pravatar.cc/60?img=1" alt="client" /></div>
+                        <div><h4>Javohir Sobirov</h4><span>CEO, TechStart</span></div>
+                    </div>
+                </div>
+
+                <div class="testimonial" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p data-key="testimonial2">"Oxunjon bilan ishlash juda qulay. Kreativ g'oyalari va texnik bilimlari ajoyib."</p>
+                    <div class="testimonial-author">
+                        <div class="avatar"><img src="https://i.pravatar.cc/60?img=2" alt="client" /></div>
+                        <div><h4>Dilnoza Rahmonova</h4><span>Marketing Director</span></div>
+                    </div>
+                </div>
+
+                <div class="testimonial" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p data-key="testimonial3">"Professional va mas'uliyatli yondashuv. Har bir bosqichda aloqada bo'lib bordi."</p>
+                    <div class="testimonial-author">
+                        <div class="avatar"><img src="https://i.pravatar.cc/60?img=3" alt="client" /></div>
+                        <div><h4>Alisher Karimov</h4><span>Freelancer</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-key="contactTitle">Aloqa</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-left" data-aos="fade-right" data-aos-duration="800">
+                    <h3>Keling <span class="gradient-text" data-key="contactTitle">bog'lanamiz</span></h3>
+                    <p data-key="contactDesc">Loyihangiz bormi? Men bilan bog'lanishingiz mumkin.</p>
+
+                    <div class="contact-item">
+                        <i class="fab fa-telegram"></i>
+                        <div><span>Telegram</span><p>@norov_vp</p></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div><span>Email</span><p>oxunjon@example.com</p></div>
+                    </div>
+                    <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <span data-key="about-location">Manzil</span>
-                            <p data-key="about-location-value">Toshkent, O'zbekiston</p>
-                        </div>
+                        <div><span data-key="location">Manzil</span><p data-key="locationVal">Samarqand, O'zbekiston</p></div>
                     </div>
-                    <div class="about-info-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <div>
-                            <span data-key="about-education">Ta'lim</span>
-                            <p data-key="about-education-value">TATU, Kompyuter injiniringi</p>
-                        </div>
-                    </div>
-                    <div class="about-info-item">
-                        <i class="fas fa-briefcase"></i>
-                        <div>
-                            <span data-key="about-current">Hozirgi</span>
-                            <p data-key="about-current-value">Senior Dasturchi @ TechCorp</p>
-                        </div>
-                    </div>
-                    <div class="about-info-item">
-                        <i class="fas fa-award"></i>
-                        <div>
-                            <span data-key="about-certificates">Sertifikatlar</span>
-                            <p data-key="about-certificates-value">AWS, React, Node.js</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <span class="stat-number" data-count="50">0</span>
-                        <span class="stat-label" data-key="stat-projects">Loyihalar</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number" data-count="4">0</span>
-                        <span class="stat-label" data-key="stat-experience">Yillik tajriba</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number" data-count="30">0</span>
-                        <span class="stat-label" data-key="stat-clients">Mijozlar</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- ===== SKILLS ===== -->
-<section id="skills" class="skills">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-number">02</span>
-            <h2 data-key="skills-title">Ko'nikmalar</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="skills-showcase">
-            <div class="skill-card-3d" data-skill="HTML">
-                <div class="skill-card-inner">
-                    <div class="skill-card-front">
-                        <i class="fab fa-html5"></i>
-                        <span>HTML5</span>
-                        <div class="skill-level">95%</div>
-                    </div>
-                    <div class="skill-card-back">
-                        <p>Semantic markup</p>
-                        <p>SEO optimized</p>
-                        <p>Accessibility</p>
+                    <div class="contact-social">
+                        <a href="https://t.me/norov_vp" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-            </div>
-            <div class="skill-card-3d" data-skill="CSS">
-                <div class="skill-card-inner">
-                    <div class="skill-card-front">
-                        <i class="fab fa-css3-alt"></i>
-                        <span>CSS3</span>
-                        <div class="skill-level">90%</div>
-                    </div>
-                    <div class="skill-card-back">
-                        <p>Flexbox/Grid</p>
-                        <p>Animations</p>
-                        <p>Responsive</p>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-card-3d" data-skill="JS">
-                <div class="skill-card-inner">
-                    <div class="skill-card-front">
-                        <i class="fab fa-js"></i>
-                        <span>JavaScript</span>
-                        <div class="skill-level">92%</div>
-                    </div>
-                    <div class="skill-card-back">
-                        <p>ES6+</p>
-                        <p>Async/Await</p>
-                        <p>DOM manipulation</p>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-card-3d" data-skill="React">
-                <div class="skill-card-inner">
-                    <div class="skill-card-front">
-                        <i class="fab fa-react"></i>
-                        <span>React.js</span>
-                        <div class="skill-level">88%</div>
-                    </div>
-                    <div class="skill-card-back">
-                        <p>Hooks</p>
-                        <p>Redux</p>
-                        <p>Next.js</p>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-card-3d" data-skill="Vue">
-                <div class="skill-card-inner">
-                    <div class="skill-card-front">
-                        <i class="fab fa-vuejs"></i>
-                        <span>Vue.js</span>
-                        <div class="skill-level">75%</div>
-                    </div>
-                    <div class="skill-card-back">
-                        <p>Composition API</p>
-                        <p>Vuex</p>
-                        <p>Nuxt.js</p>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-card-3d" data-skill="Node">
-                <div class="skill-card-inner">
-                    <div class="skill-card-front">
-                        <i class="fab fa-node-js"></i>
-                        <span>Node.js</span>
-                        <div class="skill-level">85%</div>
-                    </div>
-                    <div class="skill-card-back">
-                        <p>Express</p>
-                        <p>REST API</p>
-                        <p>WebSocket</p>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-card-3d" data-skill="Python">
-                <div class="skill-card-inner">
-                    <div class="skill-card-front">
-                        <i class="fab fa-python"></i>
-                        <span>Python</span>
-                        <div class="skill-level">80%</div>
-                    </div>
-                    <div class="skill-card-back">
-                        <p>Django</p>
-                        <p>Flask</p>
-                        <p>AI/ML</p>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-card-3d" data-skill="PHP">
-                <div class="skill-card-inner">
-                    <div class="skill-card-front">
-                        <i class="fab fa-php"></i>
-                        <span>PHP</span>
-                        <div class="skill-level">70%</div>
-                    </div>
-                    <div class="skill-card-back">
-                        <p>Laravel</p>
-                        <p>WordPress</p>
-                        <p>MVC</p>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-card-3d" data-skill="MongoDB">
-                <div class="skill-card-inner">
-                    <div class="skill-card-front">
-                        <i class="fas fa-database"></i>
-                        <span>MongoDB</span>
-                        <div class="skill-level">82%</div>
-                    </div>
-                    <div class="skill-card-back">
-                        <p>Aggregation</p>
-                        <p>Indexing</p>
-                        <p>Atlas</p>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-card-3d" data-skill="MySQL">
-                <div class="skill-card-inner">
-                    <div class="skill-card-front">
-                        <i class="fas fa-database"></i>
-                        <span>MySQL</span>
-                        <div class="skill-level">78%</div>
-                    </div>
-                    <div class="skill-card-back">
-                        <p>Optimization</p>
-                        <p>JOINs</p>
-                        <p>Stored Procedures</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tech-cloud">
-            <span><i class="fab fa-html5"></i></span>
-            <span><i class="fab fa-css3-alt"></i></span>
-            <span><i class="fab fa-js"></i></span>
-            <span><i class="fab fa-react"></i></span>
-            <span><i class="fab fa-vuejs"></i></span>
-            <span><i class="fab fa-node"></i></span>
-            <span><i class="fab fa-python"></i></span>
-            <span><i class="fab fa-php"></i></span>
-            <span><i class="fas fa-database"></i></span>
-            <span><i class="fab fa-git-alt"></i></span>
-            <span><i class="fab fa-docker"></i></span>
-            <span><i class="fab fa-aws"></i></span>
-        </div>
-    </div>
-</section>
 
-<!-- ===== PROJECTS ===== -->
-<section id="projects" class="projects">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-number">03</span>
-            <h2 data-key="projects-title">Loyihalar</h2>
-            <div class="section-line"></div>
+                <form class="contact-form" data-aos="fade-left" data-aos-duration="800" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Ismingiz" required />
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email" required />
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder="Mavzu" />
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="Xabar" required></textarea>
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-paper-plane"></i>
+                        <span data-key="sendBtn">Yuborish</span>
+                    </button>
+                </form>
+            </div>
         </div>
-        <div class="projects-grid" id="projectsGrid"></div>
-        <div class="projects-actions">
-            <button class="btn btn-outline" id="showMoreBtn">
-                <i class="fas fa-plus"></i> <span data-key="projects-more">Ko'proq loyihalar</span>
-            </button>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- ===== SERVICES ===== -->
-<section id="services" class="services">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-number">04</span>
-            <h2 data-key="services-title">Xizmatlar</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-globe"></i></div>
-                <h3 data-key="service-web-title">Web Sayt Yaratish</h3>
-                <p data-key="service-web-desc">Corporate, blog, landing page</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> <span data-key="service-web-f1">Responsive</span></li>
-                    <li><i class="fas fa-check"></i> <span data-key="service-web-f2">SEO</span></li>
-                    <li><i class="fas fa-check"></i> <span data-key="service-web-f3">Tez yuklanish</span></li>
-                </ul>
-                <div class="service-price">$500 dan</div>
-                <a href="#contact" class="btn btn-primary btn-sm" data-key="service-order">Buyurtma</a>
-            </div>
-            <div class="service-card featured">
-                <div class="service-badge" data-key="service-badge">🔥 Mashhur</div>
-                <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-                <h3 data-key="service-ecom-title">E-Commerce</h3>
-                <p data-key="service-ecom-desc">Online-do'kon tizimi</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> <span data-key="service-ecom-f1">To'lov tizimi</span></li>
-                    <li><i class="fas fa-check"></i> <span data-key="service-ecom-f2">Admin panel</span></li>
-                    <li><i class="fas fa-check"></i> <span data-key="service-ecom-f3">Yetkazib berish</span></li>
-                </ul>
-                <div class="service-price">$1500 dan</div>
-                <a href="#contact" class="btn btn-primary btn-sm" data-key="service-order">Buyurtma</a>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-                <h3 data-key="service-mobile-title">Mobil Ilova</h3>
-                <p data-key="service-mobile-desc">Android va iOS ilovalar</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> <span data-key="service-mobile-f1">Cross-platform</span></li>
-                    <li><i class="fas fa-check"></i> <span data-key="service-mobile-f2">Push xabarlar</span></li>
-                    <li><i class="fas fa-check"></i> <span data-key="service-mobile-f3">Backend</span></li>
-                </ul>
-                <div class="service-price">$2000 dan</div>
-                <a href="#contact" class="btn btn-primary btn-sm" data-key="service-order">Buyurtma</a>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-robot"></i></div>
-                <h3 data-key="service-ai-title">AI & Bot</h3>
-                <p data-key="service-ai-desc">Telegram bot va AI yordamchi</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> <span data-key="service-ai-f1">Telegram bot</span></li>
-                    <li><i class="fas fa-check"></i> <span data-key="service-ai-f2">AI integrasiya</span></li>
-                    <li><i class="fas fa-check"></i> <span data-key="service-ai-f3">Avtomatlashtirish</span></li>
-                </ul>
-                <div class="service-price">$800 dan</div>
-                <a href="#contact" class="btn btn-primary btn-sm" data-key="service-order">Buyurtma</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section id="contact" class="contact">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-number">05</span>
-            <h2 data-key="contact-title">Aloqa</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="contact-wrapper">
-            <div class="contact-left">
-                <h3><span data-key="contact-greeting">Keling</span> <span class="gradient-text" data-key="contact-greeting-highlight">bog'lanamiz</span></h3>
-                <p data-key="contact-desc">Loyihangiz bormi? Men bilan bog'lanishingiz mumkin</p>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <span data-key="contact-email">Email</span>
-                        <p>oxunjon@example.com</p>
-                    </div>
+    <!-- ============ FOOTER ============ -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <h3>Oxunjon</h3>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <span data-key="contact-phone">Telefon</span>
-                        <p>+998 90 123 45 67</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <span data-key="contact-location">Manzil</span>
-                        <p data-key="contact-location-value">Toshkent, O'zbekiston</p>
-                    </div>
-                </div>
-                <div class="contact-social">
+                <p data-key="footerDesc">Zamonaviy web saytlar va dasturlar yarataman.</p>
+                <div class="footer-social">
                     <a href="#"><i class="fab fa-github"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/norov_vp" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <input type="text" placeholder="Ismingiz" required data-key="contact-name-placeholder" />
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Email" required data-key="contact-email-placeholder" />
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <div class="form-group">
-                    <input type="text" placeholder="Mavzu" data-key="contact-subject-placeholder" />
-                    <i class="fas fa-tag"></i>
-                </div>
-                <div class="form-group">
-                    <textarea rows="4" placeholder="Xabar" required data-key="contact-message-placeholder"></textarea>
-                    <i class="fas fa-pencil-alt"></i>
-                </div>
-                <button type="submit" class="btn btn-primary btn-full">
-                    <i class="fas fa-paper-plane"></i> <span data-key="contact-send">Yuborish</span>
-                </button>
-            </form>
-        </div>
-    </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="#" class="logo"><i class="fas fa-crown"></i> Oxunjon</a>
-                <p data-key="footer-desc">Zamonaviy veb-ilovalar va mobil dasturlar yarataman.</p>
-            </div>
-            <div class="footer-links">
-                <h4 data-key="footer-menu">Menyu</h4>
-                <a href="#home" data-key="nav-home">Bosh</a>
-                <a href="#about" data-key="nav-about">Men</a>
-                <a href="#skills" data-key="nav-skills">Ko'nikmalar</a>
-                <a href="#projects" data-key="nav-projects">Loyihalar</a>
-            </div>
-            <div class="footer-links">
-                <h4 data-key="footer-services">Xizmatlar</h4>
-                <a href="#services" data-key="service-web-title">Web Sayt</a>
-                <a href="#services" data-key="service-ecom-title">E-Commerce</a>
-                <a href="#services" data-key="service-mobile-title">Mobil Ilova</a>
-            </div>
-            <div class="footer-links">
-                <h4 data-key="footer-contact">Bog'lanish</h4>
-                <a href="mailto:oxunjon@example.com"><i class="fas fa-envelope"></i> Email</a>
-                <a href="tel:+998901234567"><i class="fas fa-phone"></i> Telefon</a>
-                <a href="https://t.me/oxunjon_dev"><i class="fab fa-telegram"></i> Telegram</a>
+            <div class="footer-bottom">
+                <p>© 2026 Oxunjon. <span data-key="footerRights">Barcha huquqlar himoyalangan.</span></p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p data-key="footer-copyright">&copy; 2026 Oxunjon. Barcha huquqlar himoyalangan.</p>
-            <p data-key="footer-made">❤️ bilan yaratilgan</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-<!-- ===== SCROLL TOP ===== -->
-<button class="scroll-top" id="scrollTop">
-    <i class="fas fa-chevron-up"></i>
-</button>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-<script src="./assets/script.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/script.js"></script>
 </body>
 </html>
