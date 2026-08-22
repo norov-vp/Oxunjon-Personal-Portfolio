@@ -404,33 +404,9 @@ function setLanguage(lang) {
 const savedLang = localStorage.getItem("lang") || "uz";
 setLanguage(savedLang);
 
-// Set active lang option
 document.querySelectorAll(".lang-option").forEach((opt) => {
     if (opt.getAttribute("data-lang") === savedLang) {
         opt.classList.add("active");
-    }
-});
-
-// =========================================
-// CONTACT FORM
-// =========================================
-const contactForm = document.getElementById("contactForm");
-
-contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const subject = document.getElementById("subject").value;
-    const message = document.getElementById("message").value;
-
-    if (name && email && message) {
-        alert(
-            `✅ Xabaringiz qabul qilindi!\n\nIsm: ${name}\nEmail: ${email}\nMavzu: ${subject || "Yo'q"}\nXabar: ${message}`
-        );
-        contactForm.reset();
-    } else {
-        alert("⚠️ Iltimos, barcha maydonlarni to'ldiring!");
     }
 });
 
@@ -483,5 +459,138 @@ window.addEventListener("scroll", () => {
         scrollIndicator.style.transition = "opacity 0.5s";
     } else {
         scrollIndicator.style.opacity = "0.6";
+    }
+});
+
+// =========================================
+// SKILL BARS ANIMATION
+// =========================================
+const skillObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const fills = entry.target.querySelectorAll(".skill-fill");
+                fills.forEach((fill) => {
+                    const width = fill.style.width;
+                    fill.style.width = "0%";
+                    setTimeout(() => {
+                        fill.style.width = width;
+                    }, 100);
+                });
+                skillObserver.unobserve(entry.target);
+            }
+        });
+    },
+    { threshold: 0.3 }
+);
+
+document.querySelectorAll(".skills-grid").forEach((grid) => {
+    skillObserver.observe(grid);
+});
+
+// =========================================
+// PROJECT CARD 3D TILT
+// =========================================
+document.querySelectorAll(".project").forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
+    });
+});
+
+// =========================================
+// SERVICE CARD 3D TILT
+// =========================================
+document.querySelectorAll(".service").forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
+    });
+});
+
+// =========================================
+// BARCHA LOYIHALARNI KO'RSATISH
+// =========================================
+const showAllBtn = document.getElementById("showAllProjects");
+const allProjectsWrapper = document.getElementById("allProjectsWrapper");
+const closeAllBtn = document.getElementById("closeAllProjects");
+const projectsCount = document.getElementById("projectsCount");
+let isAllVisible = false;
+
+showAllBtn.addEventListener("click", function() {
+    isAllVisible = !isAllVisible;
+    
+    if (isAllVisible) {
+        allProjectsWrapper.style.display = "block";
+        // AOS bilan yangi loyihalarni animatsiya qilish
+        setTimeout(() => {
+            allProjectsWrapper.querySelectorAll(".project").forEach((el, i) => {
+                el.setAttribute("data-aos", "flip-up");
+                el.setAttribute("data-aos-delay", i * 50);
+                AOS.refresh();
+            });
+        }, 100);
+        
+        // Loyihalar sonini yangilash
+        const countEl = projectsCount.querySelector(".count-current");
+        if (countEl) countEl.textContent = "8";
+        
+        // Tugma matnini o'zgartirish
+        showAllBtn.querySelector(".btn-text span").textContent = "Loyihalarni yopish";
+        showAllBtn.querySelector(".btn-icon i").className = "fas fa-arrow-up";
+        
+        // Sahifani pastga scroll qilish
+        setTimeout(() => {
+            allProjectsWrapper.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300);
+    } else {
+        allProjectsWrapper.style.display = "none";
+        const countEl = projectsCount.querySelector(".count-current");
+        if (countEl) countEl.textContent = "4";
+        showAllBtn.querySelector(".btn-text span").textContent = "Barcha loyihalar";
+        showAllBtn.querySelector(".btn-icon i").className = "fas fa-arrow-right";
+    }
+});
+
+closeAllBtn.addEventListener("click", () => {
+    isAllVisible = false;
+    allProjectsWrapper.style.display = "none";
+    const countEl = projectsCount.querySelector(".count-current");
+    if (countEl) countEl.textContent = "4";
+    showAllBtn.querySelector(".btn-text span").textContent = "Barcha loyihalar";
+    showAllBtn.querySelector(".btn-icon i").className = "fas fa-arrow-right";
+});
+
+// =========================================
+// SMOOTH NAVBAR BACKGROUND
+// =========================================
+window.addEventListener("scroll", () => {
+    const navbar = document.getElementById("navbar");
+    if (window.scrollY > 50) {
+        navbar.style.background = "rgba(10, 10, 10, 0.95)";
+        navbar.style.backdropFilter = "blur(25px)";
+    } else {
+        navbar.style.background = "rgba(10, 10, 10, 0.85)";
+        navbar.style.backdropFilter = "blur(20px)";
     }
 });

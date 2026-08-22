@@ -15,37 +15,21 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
 </head>
 <body>
 
     <!-- ============ PRELOADER ============ -->
     <div class="preloader" id="preloader">
         <div class="preloader-content">
-            <div class="preloader-logo">
-                <i class="fas fa-code"></i>
-                <span>Oxunjon</span>
-            </div>
-            <div class="preloader-terminal">
-                <div class="terminal-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                    <span class="terminal-title">developer@portfolio:~$</span>
+            <div class="preloader-ring"></div>
+            <div class="preloader-text">Yuklanmoqda...</div>
+            <div class="preloader-bar-wrapper">
+                <div class="preloader-bar">
+                    <div class="preloader-fill" id="preloaderFill"></div>
                 </div>
-                <div class="terminal-body">
-                    <div class="term-line"><span class="prompt">$</span> <span class="cmd">🚀 Starting system...</span></div>
-                    <div class="term-line"><span class="prompt">$</span> <span class="cmd">📦 Loading modules...</span></div>
-                    <div class="term-line"><span class="prompt">$</span> <span class="cmd">🔗 Connecting to server...</span></div>
-                    <div class="term-line"><span class="prompt">$</span> <span class="cmd">⚡ Initializing portfolio...</span></div>
-                    <div class="term-line success"><span class="prompt">$</span> <span class="cmd">✅ Welcome, Oxunjon!</span></div>
-                    <span class="term-cursor"></span>
-                </div>
+                <div class="preloader-percent" id="preloaderPercent">0%</div>
             </div>
-            <div class="preloader-bar">
-                <div class="preloader-fill" id="preloaderFill"></div>
-            </div>
-            <div class="preloader-percent" id="preloaderPercent">0%</div>
         </div>
     </div>
 
@@ -151,13 +135,12 @@
                     </div>
                 </div>
 
-                <!-- ============ RASM ============ -->
                 <div class="hero-visual" data-aos="fade-left" data-aos-duration="1200">
                     <div class="profile-wrapper">
                         <div class="profile-image-container">
                             <div class="profile-ring"></div>
                             <div class="profile-inner">
-                                <img src="./image/photo_2026-08-17_11-59-50.jpg" alt="Oxunjon" />
+                                <img src="./image/photo_2026-08-17_12-00-24.jpg" alt="Oxunjon" />
                                 <div class="profile-glow"></div>
                                 <div class="profile-overlay">
                                     <div class="profile-social">
@@ -172,7 +155,6 @@
                                 <span>Available</span>
                             </div>
                         </div>
-                        <!-- Floating icons -->
                         <div class="float-icon f1"><i class="fab fa-php"></i></div>
                         <div class="float-icon f2"><i class="fab fa-js"></i></div>
                         <div class="float-icon f3"><i class="fab fa-react"></i></div>
@@ -195,7 +177,6 @@
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <h2 data-key="aboutTitle">Men haqimda</h2>
-                <div class="line"></div>
             </div>
 
             <div class="about-wrapper">
@@ -203,7 +184,7 @@
                     <div class="img-container">
                         <div class="img-ring"></div>
                         <div class="img-inner">
-                            <img src="./image/photo_2026-08-17_11-59-50.jpg" alt="Oxunjon" />
+                            <img src="./image/photo_2026-08-17_12-00-30 (2).jpg" alt="Oxunjon" />
                             <div class="img-glow"></div>
                             <div class="img-overlay">
                                 <div class="img-social">
@@ -244,14 +225,14 @@
                             <i class="fas fa-briefcase"></i>
                             <div>
                                 <span data-key="current">Hozirgi</span>
-                                <p data-key="currentVal">Senior Dasturchi</p>
+                                <p data-key="currentVal">Dasturchi</p>
                             </div>
                         </div>
                         <div class="about-item">
                             <i class="fas fa-award"></i>
                             <div>
                                 <span data-key="certificates">Sertifikatlar</span>
-                                <p data-key="certificatesVal">AWS, React, Node.js</p>
+                                <p data-key="certificatesVal">C++, Frontend, Backend</p>
                             </div>
                         </div>
                     </div>
@@ -280,7 +261,6 @@
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <h2 data-key="skillsTitle">Ko'nikmalar</h2>
-                <div class="line"></div>
             </div>
 
             <div class="skills-grid">
@@ -341,73 +321,237 @@
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <h2 data-key="projectsTitle">Loyihalar</h2>
-                <div class="line"></div>
+                <p class="section-subtitle">Mening so'nggi ishlarim</p>
             </div>
 
-            <div class="projects-grid">
+            <!-- Loyihalar grid -->
+            <div class="projects-grid" id="projectsGrid">
+                <!-- 4 ta asosiy loyiha -->
                 <div class="project" data-aos="flip-up" data-aos-delay="0">
                     <div class="project-thumb">
-                        <img src="https://via.placeholder.com/400x250/0a0a1a/ff0040?text=Web" alt="Web" />
+                        <img src="./image/photo_2026-08-21_21-31-44.jpg" alt="Web" />
                         <div class="project-overlay">
                             <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                            <span class="project-tag">Web</span>
+                            <span class="project-tag">Avto</span>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 data-key="project1Title">Zamonaviy Web Sayt</h3>
-                        <p data-key="project1Desc">Responsive va zamonaviy dizayn</p>
+                        <h3>Avto Master</h3>
+                        <p>Avtomobilingizga Professional xizmatlar</p>
                         <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
-                        <a href="#" class="project-demo" data-key="projectDemo">Ko'rish →</a>
+                        <a href="#" class="project-demo">Ko'rish →</a>
                     </div>
                 </div>
 
                 <div class="project" data-aos="flip-up" data-aos-delay="100">
                     <div class="project-thumb">
-                        <img src="https://via.placeholder.com/400x250/0a0a1a/ff3366?text=E-Commerce" alt="E-Commerce" />
+                        <img src="./image/photo_2026-08-21_21-31-50.jpg" alt="E-Commerce" />
                         <div class="project-overlay">
                             <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                            <span class="project-tag">E-Commerce</span>
+                            <span class="project-tag">Core</span>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 data-key="project2Title">E-Commerce Platform</h3>
-                        <p data-key="project2Desc">Online do'kon tizimi</p>
-                        <div class="project-tech"><span>React</span><span>Node.js</span><span>MongoDB</span></div>
-                        <a href="#" class="project-demo" data-key="projectDemo">Ko'rish →</a>
+                        <h3>FinCore</h3>
+                        <p>Moliyaviy Kelajak Sari Yo'l</p>
+                        <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                        <a href="#" class="project-demo">Ko'rish →</a>
                     </div>
                 </div>
 
                 <div class="project" data-aos="flip-up" data-aos-delay="200">
                     <div class="project-thumb">
-                        <img src="https://via.placeholder.com/400x250/0a0a1a/cc0033?text=Bot" alt="Bot" />
+                        <img src="./image/photo_2026-08-21_21-31-58.jpg" alt="Bot" />
                         <div class="project-overlay">
                             <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                            <span class="project-tag">Bot</span>
+                            <span class="project-tag">Barber</span>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 data-key="project3Title">Telegram Bot</h3>
-                        <p data-key="project3Desc">Avtomatlashtirilgan bot</p>
-                        <div class="project-tech"><span>Python</span><span>Aiogram</span><span>PostgreSQL</span></div>
-                        <a href="#" class="project-demo" data-key="projectDemo">Ko'rish →</a>
+                        <h3>Barber Shop</h3>
+                        <p>Zamonaviy Barber Portfolio</p>
+                        <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                        <a href="#" class="project-demo">Ko'rish →</a>
                     </div>
                 </div>
 
                 <div class="project" data-aos="flip-up" data-aos-delay="300">
                     <div class="project-thumb">
-                        <img src="https://via.placeholder.com/400x250/0a0a1a/ff0040?text=Mobile" alt="Mobile" />
+                        <img src="./image/photo_2026-08-21_21-32-06.jpg" alt="Mobile" />
                         <div class="project-overlay">
                             <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                            <span class="project-tag">Mobile</span>
+                            <span class="project-tag">Shahar</span>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 data-key="project4Title">Mobil Ilova</h3>
-                        <p data-key="project4Desc">Android va iOS ilovalar</p>
-                        <div class="project-tech"><span>React Native</span><span>Firebase</span></div>
-                        <a href="#" class="project-demo" data-key="projectDemo">Ko'rish →</a>
+                        <h3>Mening Shahrim</h3>
+                        <p>Zamonaviy Web Sayt</p>
+                        <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                        <a href="#" class="project-demo">Ko'rish →</a>
                     </div>
                 </div>
+            </div>
+
+            <!-- Barcha loyihalar tugmasi -->
+            <div class="projects-more-wrapper" data-aos="fade-up" data-aos-delay="400">
+                <button class="btn-all-projects" id="showAllProjects">
+                    <span class="btn-text">
+                        <i class="fas fa-th-large"></i>
+                        <span>Barcha loyihalar</span>
+                    </span>
+                    <span class="btn-icon">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </button>
+            </div>
+
+            <!-- Barcha loyihalar (dastlab yashirin) -->
+            <div class="all-projects-wrapper" id="allProjectsWrapper" style="display:none;">
+                <div class="all-projects-header">
+                    <h3>Barcha loyihalar</h3>
+                    <button class="close-projects" id="closeAllProjects">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="projects-grid all-projects-grid">
+                    <!-- 4 ta asosiy loyiha takrorlanadi -->
+                    <div class="project" data-aos="flip-up" data-aos-delay="0">
+                        <div class="project-thumb">
+                            <img src="./image/photo_2026-08-21_21-31-44.jpg" alt="Web" />
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                                <span class="project-tag">Avto</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Avto Master</h3>
+                            <p>Avtomobilingizga Professional xizmatlar</p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                            <a href="#" class="project-demo">Ko'rish →</a>
+                        </div>
+                    </div>
+
+                    <div class="project" data-aos="flip-up" data-aos-delay="100">
+                        <div class="project-thumb">
+                            <img src="./image/photo_2026-08-21_21-31-50.jpg" alt="E-Commerce" />
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                                <span class="project-tag">Core</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>FinCore</h3>
+                            <p>Moliyaviy Kelajak Sari Yo'l</p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                            <a href="#" class="project-demo">Ko'rish →</a>
+                        </div>
+                    </div>
+
+                    <div class="project" data-aos="flip-up" data-aos-delay="200">
+                        <div class="project-thumb">
+                            <img src="./image/photo_2026-08-21_21-31-58.jpg" alt="Bot" />
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                                <span class="project-tag">Barber</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Barber Shop</h3>
+                            <p>Zamonaviy Barber Portfolio</p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                            <a href="#" class="project-demo">Ko'rish →</a>
+                        </div>
+                    </div>
+
+                    <div class="project" data-aos="flip-up" data-aos-delay="300">
+                        <div class="project-thumb">
+                            <img src="./image/photo_2026-08-21_21-32-06.jpg" alt="Mobile" />
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                                <span class="project-tag">Shahar</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Mening Shahrim</h3>
+                            <p>Zamonaviy Web Sayt</p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                            <a href="#" class="project-demo">Ko'rish →</a>
+                        </div>
+                    </div>
+
+                    <!-- Qo'shimcha 4 ta loyiha -->
+                    <div class="project" data-aos="flip-up" data-aos-delay="400">
+                        <div class="project-thumb">
+                            <img src="./image/photo_2026-08-21_21-32-15.jpg" alt="Market" />
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                                <span class="project-tag">Market</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Uzum Market</h3>
+                            <p>Uzum market platformasi</p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                            <a href="#" class="project-demo">Ko'rish →</a>
+                        </div>
+                    </div>
+
+                    <div class="project" data-aos="flip-up" data-aos-delay="500">
+                        <div class="project-thumb">
+                            <img src="./image/photo_2026-08-21_21-32-23.jpg" alt="University" />
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                                <span class="project-tag">Fakultet</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>SamDU University</h3>
+                            <p>Sun'iy Intellekt va Raqamli Texnologiyalar Fakulteti</p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                            <a href="#" class="project-demo">Ko'rish →</a>
+                        </div>
+                    </div>
+
+                    <div class="project" data-aos="flip-up" data-aos-delay="600">
+                        <div class="project-thumb">
+                            <img src="./image/photo_2026-08-21_21-32-30.jpg" alt="Barber" />
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                                <span class="project-tag">Barber</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Sartaroshxona</h3>
+                            <p>Tajriba va Stil</p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                            <a href="#" class="project-demo">Ko'rish →</a>
+                        </div>
+                    </div>
+
+                    <div class="project" data-aos="flip-up" data-aos-delay="700">
+                        <div class="project-thumb">
+                            <img src="./image/photo_2026-08-21_21-32-38.jpg" alt="Game" />
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                                <span class="project-tag">Game</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Memore Game</h3>
+                            <p>Memory Unmasked Game</p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                            <a href="#" class="project-demo">Ko'rish →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loyihalar soni -->
+            <div class="projects-count" id="projectsCount">
+                <span class="count-current">4</span>
+                <span class="count-sep">/</span>
+                <span class="count-total">8</span>
+                <span class="count-label">loyiha</span>
             </div>
         </div>
     </section>
@@ -417,7 +561,7 @@
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <h2 data-key="servicesTitle">Xizmatlar</h2>
-                <div class="line"></div>
+                <p class="section-subtitle">Men taklif qiladigan xizmatlar</p>
             </div>
 
             <div class="services-grid">
@@ -433,7 +577,7 @@
                     <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
                     <h3 data-key="service2Title">E-Commerce</h3>
                     <p data-key="service2Desc">Online do'kon tizimi</p>
-                    <div class="service-price">$1500+</div>
+                    <div class="service-price">$1000+</div>
                     <a href="https://t.me/norov_vp" target="_blank" class="btn btn-primary" data-key="orderBtn">Buyurtma</a>
                 </div>
 
@@ -441,7 +585,7 @@
                     <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
                     <h3 data-key="service3Title">Mobil Ilova</h3>
                     <p data-key="service3Desc">Android va iOS ilovalar</p>
-                    <div class="service-price">$2000+</div>
+                    <div class="service-price">$3000+</div>
                     <a href="https://t.me/norov_vp" target="_blank" class="btn btn-primary" data-key="orderBtn">Buyurtma</a>
                 </div>
 
@@ -449,7 +593,7 @@
                     <div class="service-icon"><i class="fas fa-robot"></i></div>
                     <h3 data-key="service4Title">AI & Bot</h3>
                     <p data-key="service4Desc">Telegram bot va AI yordamchi</p>
-                    <div class="service-price">$800+</div>
+                    <div class="service-price">$900+</div>
                     <a href="https://t.me/norov_vp" target="_blank" class="btn btn-primary" data-key="orderBtn">Buyurtma</a>
                 </div>
             </div>
@@ -461,7 +605,7 @@
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <h2 data-key="testimonialsTitle">Mijozlar fikri</h2>
-                <div class="line"></div>
+                <p class="section-subtitle">Mijozlarim men haqimda nima deyishadi</p>
             </div>
 
             <div class="testimonials-grid">
@@ -500,25 +644,43 @@
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <h2 data-key="contactTitle">Aloqa</h2>
-                <div class="line"></div>
+                <p class="section-subtitle">Men bilan bog'lanish uchun</p>
             </div>
 
             <div class="contact-wrapper">
                 <div class="contact-left" data-aos="fade-right" data-aos-duration="800">
-                    <h3>Keling <span class="gradient-text" data-key="contactTitle">bog'lanamiz</span></h3>
+                    <h3>Keling <span class="gradient-text">bog'lanamiz</span></h3>
                     <p data-key="contactDesc">Loyihangiz bormi? Men bilan bog'lanishingiz mumkin.</p>
 
-                    <div class="contact-item">
-                        <i class="fab fa-telegram"></i>
-                        <div><span>Telegram</span><p>@norov_vp</p></div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div><span>Email</span><p>oxunjon@example.com</p></div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div><span data-key="location">Manzil</span><p data-key="locationVal">Samarqand, O'zbekiston</p></div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fab fa-telegram-plane"></i></div>
+                            <div>
+                                <span>Telegram</span>
+                                <p>@norov_vp</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <span>Email</span>
+                                <p>oxunjon07@example.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <span>Telefon</span>
+                                <p>+998 88 088 01 61</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <span data-key="location">Manzil</span>
+                                <p data-key="locationVal">Samarqand, O'zbekiston</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="contact-social">
@@ -526,27 +688,28 @@
                         <a href="#"><i class="fab fa-github"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
 
-                <form class="contact-form" data-aos="fade-left" data-aos-duration="800" id="contactForm">
+                <form class="contact-form" data-aos="fade-left" data-aos-duration="800" id="contactForm" method="POST" action="">
                     <div class="form-group">
-                        <input type="text" id="name" placeholder="Ismingiz" required />
+                        <input type="text" id="name" name="name" placeholder="Ismingiz" required />
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" placeholder="Email" required />
+                        <input type="email" id="email" name="email" placeholder="Email manzilingiz" required />
                         <i class="fas fa-envelope"></i>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="subject" placeholder="Mavzu" />
+                        <input type="text" id="subject" name="subject" placeholder="Mavzu" />
                         <i class="fas fa-tag"></i>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" rows="5" placeholder="Xabar" required></textarea>
+                        <textarea id="message" name="message" rows="5" placeholder="Xabaringizni yozing..." required></textarea>
                         <i class="fas fa-pencil-alt"></i>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-full">
+                    <button type="submit" class="btn btn-primary btn-full" name="submit">
                         <i class="fas fa-paper-plane"></i>
                         <span data-key="sendBtn">Yuborish</span>
                     </button>
@@ -572,7 +735,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 Oxunjon. <span data-key="footerRights">Barcha huquqlar himoyalangan.</span></p>
+                <p>©  Oxunjon. <span data-key="footerRights">Barcha huquqlar himoyalangan.</span></p>
             </div>
         </div>
     </footer>
@@ -581,6 +744,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- Custom JS -->
-    <script src="assets/script.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
 </html>
