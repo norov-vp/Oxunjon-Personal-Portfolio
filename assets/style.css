@@ -1181,7 +1181,7 @@ body.light .stat {
 }
 
 /* =========================================
-   SKILLS - IJKONKALAR BILAN
+   SKILLS
 ========================================= */
 .skills {
     background: #0a0a0a;
@@ -1561,7 +1561,7 @@ body.light .all-projects-header {
 }
 
 /* =========================================
-   SERVICES - IJKONKALAR BILAN
+   SERVICES
 ========================================= */
 .services {
     background: #0a0a0a;
@@ -1894,27 +1894,6 @@ body.light .form-group textarea {
     width: 100%;
     padding: 16px;
     font-size: 16px;
-}
-
-/* FORM SUCCESS & ERROR */
-.form-success {
-    margin-top: 15px;
-    padding: 12px 20px;
-    background: rgba(0, 255, 100, 0.1);
-    border: 1px solid rgba(0, 255, 100, 0.2);
-    border-radius: 10px;
-    color: #00ff88;
-    text-align: center;
-}
-
-.form-error {
-    margin-top: 15px;
-    padding: 12px 20px;
-    background: rgba(255, 0, 0, 0.1);
-    border: 1px solid rgba(255, 0, 0, 0.2);
-    border-radius: 10px;
-    color: #ff4444;
-    text-align: center;
 }
 
 /* =========================================

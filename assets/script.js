@@ -224,7 +224,7 @@ const langData = {
         badge: "Open to Work",
         hello: "Salom, men",
         role: "Full-Stack Dasturchi",
-        exp: "2+ yillik tajriba | 50+ loyiha",
+        exp: "2+ yillik tajriba",
         projectsBtn: "Loyihalar",
         contactBtn: "Bog‘lanish",
         aboutTitle: "Men haqimda",
@@ -242,15 +242,6 @@ const langData = {
         clientsStat: "Mijozlar",
         skillsTitle: "Ko'nikmalar",
         projectsTitle: "Loyihalar",
-        project1Title: "Zamonaviy Web Sayt",
-        project1Desc: "Responsive va zamonaviy dizayn",
-        project2Title: "E-Commerce Platform",
-        project2Desc: "Online do'kon tizimi",
-        project3Title: "Telegram Bot",
-        project3Desc: "Avtomatlashtirilgan bot",
-        project4Title: "Mobil Ilova",
-        project4Desc: "Android va iOS ilovalar",
-        projectDemo: "Ko'rish →",
         servicesTitle: "Xizmatlar",
         service1Title: "Web Sayt",
         service1Desc: "Zamonaviy web sayt yaratish",
@@ -281,7 +272,7 @@ const langData = {
         badge: "Открыт к работе",
         hello: "Привет, я",
         role: "Full-Stack Разработчик",
-        exp: "2+ года опыта | 50+ проектов",
+        exp: "2+ года опыта",
         projectsBtn: "Проекты",
         contactBtn: "Связаться",
         aboutTitle: "Обо мне",
@@ -299,15 +290,6 @@ const langData = {
         clientsStat: "Клиенты",
         skillsTitle: "Навыки",
         projectsTitle: "Проекты",
-        project1Title: "Современный Веб-Сайт",
-        project1Desc: "Адаптивный и современный дизайн",
-        project2Title: "E-Commerce Платформа",
-        project2Desc: "Система интернет-магазина",
-        project3Title: "Telegram Бот",
-        project3Desc: "Автоматизированный бот",
-        project4Title: "Мобильное Приложение",
-        project4Desc: "Android и iOS приложения",
-        projectDemo: "Смотреть →",
         servicesTitle: "Услуги",
         service1Title: "Веб-Сайт",
         service1Desc: "Создание современного веб-сайта",
@@ -338,7 +320,7 @@ const langData = {
         badge: "Open to Work",
         hello: "Hello, I'm",
         role: "Full-Stack Developer",
-        exp: "2+ years experience | 50+ projects",
+        exp: "2+ years experience",
         projectsBtn: "Projects",
         contactBtn: "Contact",
         aboutTitle: "About Me",
@@ -356,15 +338,6 @@ const langData = {
         clientsStat: "Clients",
         skillsTitle: "Skills",
         projectsTitle: "Projects",
-        project1Title: "Modern Web Site",
-        project1Desc: "Responsive and modern design",
-        project2Title: "E-Commerce Platform",
-        project2Desc: "Online store system",
-        project3Title: "Telegram Bot",
-        project3Desc: "Automated bot",
-        project4Title: "Mobile App",
-        project4Desc: "Android & iOS apps",
-        projectDemo: "View →",
         servicesTitle: "Services",
         service1Title: "Web Site",
         service1Desc: "Creating modern websites",
@@ -542,7 +515,6 @@ showAllBtn.addEventListener("click", function() {
     
     if (isAllVisible) {
         allProjectsWrapper.style.display = "block";
-        // AOS bilan yangi loyihalarni animatsiya qilish
         setTimeout(() => {
             allProjectsWrapper.querySelectorAll(".project").forEach((el, i) => {
                 el.setAttribute("data-aos", "flip-up");
@@ -551,15 +523,12 @@ showAllBtn.addEventListener("click", function() {
             });
         }, 100);
         
-        // Loyihalar sonini yangilash
         const countEl = projectsCount.querySelector(".count-current");
         if (countEl) countEl.textContent = "8";
         
-        // Tugma matnini o'zgartirish
         showAllBtn.querySelector(".btn-text span").textContent = "Loyihalarni yopish";
         showAllBtn.querySelector(".btn-icon i").className = "fas fa-arrow-up";
         
-        // Sahifani pastga scroll qilish
         setTimeout(() => {
             allProjectsWrapper.scrollIntoView({ behavior: "smooth", block: "start" });
         }, 300);
@@ -593,4 +562,32 @@ window.addEventListener("scroll", () => {
         navbar.style.background = "rgba(10, 10, 10, 0.85)";
         navbar.style.backdropFilter = "blur(20px)";
     }
+});
+
+// =========================================
+// CONTACT FORM
+// =========================================
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    
+    if (!name || !email || !message) {
+        alert("Iltimos, barcha maydonlarni to'ldiring!");
+        return;
+    }
+    
+    if (!email.includes("@") || !email.includes(".")) {
+        alert("Iltimos, to'g'ri email manzil kiriting!");
+        return;
+    }
+    
+    const telegramUrl = `https://t.me/norov_vp?text=📩 *Yangi xabar!*%0A%0A👤 *Ism:* ${encodeURIComponent(name)}%0A📧 *Email:* ${encodeURIComponent(email)}%0A📝 *Xabar:* ${encodeURIComponent(message)}`;
+    
+    window.open(telegramUrl, "_blank");
+    
+    this.reset();
+    alert("✅ Xabaringiz Telegram orqali yuborildi!");
 });
